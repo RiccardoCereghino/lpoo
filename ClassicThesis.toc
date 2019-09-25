@@ -1,7 +1,16 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
-\babel@toc {american}{}
+\babel@toc {italian}{}
+\babel@toc {italian}{}
 \defcounter {refsection}{0}\relax 
 \vspace {-\cftbeforepartskip }
-\babel@toc {american}{}
+\babel@toc {italian}{}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{\numberline {i}{Indtroduzione}}{1}{part.1}% 
+\contentsline {chapter}{\numberline {1}{Linguaggi di programmazione di alto livello}}{1}{chapter.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.1}{Linguaggi staticamente tipati}}{1}{section.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.1.1}{Vantaggi}}{1}{subsection.1.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.2}{Linguaggi di programmazione tipati}}{1}{section.1.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {part}{\numberline {i}{Struttura di un linguaggio}}{3}{part.1}% 
