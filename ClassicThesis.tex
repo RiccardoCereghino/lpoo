@@ -64,6 +64,8 @@
 %\setbibpreamble{}
 \pagenumbering{roman}
 \pagestyle{plain}
+\newtheorem{theorem}{Definizione}
+
 %********************************************************************
 % Frontmatter
 %*******************************************************
@@ -75,7 +77,7 @@
 %\cleardoublepage\include{FrontBackmatter/Abstract}
 %\cleardoublepage\include{FrontBackmatter/Publications}
 %\cleardoublepage\include{FrontBackmatter/Acknowledgments}
-\cleardoublepage\include{FrontBackmatter/Contents}
+%\cleardoublepage\include{FrontBackmatter/Contents}
 %********************************************************************
 % Mainmatter
 %*******************************************************
@@ -84,9 +86,11 @@
 \pagenumbering{arabic}
 %\setcounter{page}{90}
 % use \cleardoublepage here to avoid problems with pdfbookmark
-\cleardoublepage
+%\cleardoublepage
+\part{Principi dei linguaggi di programmazione}\label{pt:struttura}
 \include{Chapters/Chapter01}
-\cleardoublepage
+\include{Chapters/Chapter02}
+%\cleardoublepage
 %\ctparttext{You can put some informational part preamble text here.
 %Illo principalmente su nos. Non message \emph{occidental} angloromanic
 %da. Debitas effortio simplificate sia se, auxiliar summarios da que,
@@ -94,8 +98,7 @@
 %interlingua se que. Al via multo esser specimen, campo responder que
 %da. Le usate medical addresses pro, europa origine sanctificate nos se.}
 %\part{The Showcase}\label{pt:showcase}
-\part{Struttura di un linguaggio}\label{pt:struttura}
-\include{Chapters/Chapter02}
+%\include{Chapters/Chapter02}
 %\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
 %\include{Chapters/Chapter03}
 %\include{multiToC} % <--- just debug stuff, ignore for your documents

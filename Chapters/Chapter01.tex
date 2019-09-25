@@ -1,4 +1,4 @@
-\chapter{Linguaggi di programmazione di alto livello}\label{ch:lpoo}
+\chapter{Introduzione agli elementi di un linguaggio di programmazione}\label{ch:elementi}
 I motivi della creazione ed utilizzo di un linguaggio di programmazione di alto
 livello sono di fornire una descrizione precisa, ovvero una specifica formale,
 e di offrire un interpretazione tramite interprete da compilare.
@@ -8,21 +8,30 @@ la quale può essere statica o dinamica.
 
 \section{Linguaggi staticamente tipati}
 Sono provvisti di semantica statica, legata alla nozione di \emph{tipo statico},
-troviamo:
-\begin{itemize}
-  \item \textbf{statements:} devono essere usati in maniera consistente rispetto
-    ai vari tipi di valori;
-  \item \textbf{variabili:} devono essere dichiarate ed usate in maniera consistente
-    rispetto alla loro dichiarazione.
-\end{itemize}
-\subsection{Vantaggi}
-\begin{itemize}
-  \item gli errori vengono rilevati prima, comportando meno errori dinamici;
-  \item efficienza.
-\end{itemize}
+la compilazione avviene   \emph{prima} dell'esecuzione del programma.
 
-\section{Linguaggi di programmazione tipati}
-I linguaggi di programmazione tipati non sono provvisti di semantica statica, utilizzano inconsistemente operatori,
-statement e variabilir; ma generano errori dinamici.
+In un linguaggio staticamente tipato, gli operatori e gli \textit{statements}
+devono essere consisenti con il tipo di valore e le variabili devono essere
+dichiarate ed usate consistentemente rispetto la loro dichiarazione.
+
+I vantaggi risiedono nella preventiva rilevazione degli errori e nell'efficienza.
+
+\section{Linguaggi di programmazione dinamicamente tipati}
+I linguaggi di programmazione dinamicamente tipati sono compilati \textbf{durante}
+l'esecuzione del programma, non sono provvisti di semantica statica, utilizzano
+inconsistemente operatori, statements e variabilii; ma generano errori dinamici.
 Sono solitamente più semplici ed espressivi.
 
+\subsection{Esempi di errori}
+\begin{lstlisting}[language=Java, caption={Errore di sintassi}]
+x = ;
+\end{lstlisting}
+
+\begin{lstlisting}[language=Java, caption={Errore statico}]
+int x=0;
+\end{lstlisting}
+
+\begin{lstlisting}[language=Java, caption={Errore Dinamico}]
+x = null;
+if(y<0) y=1; else y=x.value;
+\end{lstlisting}

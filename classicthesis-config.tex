@@ -76,7 +76,7 @@
 % ********************************************************************
 % Packages with options that might require adjustments
 % ********************************************************************
-\PassOptionsToPackage{ngerman,american, italian}{babel} % change this to your language(s), main language last
+\PassOptionsToPackage{american, italian}{babel} % change this to your language(s), main language last
 % Spanish languages need extra options in order to work with this template
 %\PassOptionsToPackage{spanish,es-lcroman}{babel}
     \usepackage{babel}
@@ -136,11 +136,11 @@
 % ****************************************************************************************************
 \usepackage{listings}
 %\lstset{emph={trueIndex,root},emphstyle=\color{BlueViolet}}%\underbar} % for special keywords
-\lstset{language=[LaTeX]Tex,%C++,
+\lstset{language=Java,
   morekeywords={PassOptionsToPackage,selectlanguage},
   keywordstyle=\color{RoyalBlue},%\bfseries,
   basicstyle=\small\ttfamily,
-  %identifierstyle=\color{NavyBlue},
+  identifierstyle=\color{NavyBlue},
   commentstyle=\color{Green}\ttfamily,
   stringstyle=\rmfamily,
   numbers=none,%left,%
@@ -149,10 +149,10 @@
   numbersep=8pt,
   showstringspaces=false,
   breaklines=true,
-  %frameround=ftff,
-  %frame=single,
+  frameround=ftff,
+  frame=single,
   belowcaptionskip=.75\baselineskip
-  %frame=L
+  frame=L
 }
 % ****************************************************************************************************
 
@@ -162,6 +162,29 @@
 % ****************************************************************************************************
 % 6. Last calls before the bar closes
 % ****************************************************************************************************
+\usepackage{amssymb}
+\usepackage{ntheorem}
+
+\let\numberset\mathbb
+\newcommand{\N}{\numberset{N}}
+\newcommand{\Z}{\numberset{Z}}
+\newcommand{\Q}{\numberset{Q}}
+\newcommand{\R}{\numberset{R}}
+\newcommand{\C}{\numberset{C}}
+\newcommand{\U}{\numberset{U}}
+\newcommand{\I}{\numberset{I}}
+\newcommand{\PP}{\numberset{P}}
+\newcommand{\CC}{\complement}
+\newcommand{\dom}{\text{dom }}
+\newcommand{\im}{\text{Im }}
+\newcommand{\foi}{\text{f.i.}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\cc}{\mathcal{C}}
+\newcommand{\dd}{\mathrm{d}}
+
+\usepackage{float}
+\usepackage{wrapfig}
+
 % ********************************************************************
 % Her Majesty herself
 % ********************************************************************
