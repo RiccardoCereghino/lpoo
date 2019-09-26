@@ -48,9 +48,83 @@ La funzione $u:[1\dots4]\rightarrow A$ rappresenta la stringa $"Word"$ con:
 La concatenazione è associativa, ma non commutativa.
 
 La stringa vuota è l'identità dell'elemento.
-\subsubsection{Iterazione}
+\subsubsection{Induzione}
 La definizione di $u^n$ per induzione su $n \in \N$:
-\[u^0 = \lambda \]
-\[u^{n+1} = u \cdot u^n\]
+
+Base: $u^0 = \lambda$
+
+Passo induttivo: $u^{n+1} = u \cdot u^n$
 Per cui $u^n$ si concatena con se stesso $n$ volte.
 \end{theorem}
+\subsection{Insiemi di stringhe}
+\begin{theorem}
+  Sia $A$ un alfabeto:
+  \begin{itemize}
+    \item $A^n =$ l'insieme di tutte le stringhe in $A$ con lunghezza $n$;
+    \item $A^+ =$ l'insieme di tutte le stringhe in $A$ con lunghezza maggiore
+      di $0$;
+    \item $A^\star =$ l'insieme di tutte le stringhe in $A$;
+    \item $A^+ = \bigcup_{n>0}A^n$;
+    \item $A^\star = \bigcup_{n\geq0}A^n=A^0\cup A^+$
+  \end{itemize}
+\end{theorem}
+
+\section{Linguaggio formale}
+\begin{theorem}[Nozione sintattica di linguaggio]
+  Un linguaggio $L$ in un alfabeto $A$ è un sottoinsieme di $A^\star$
+\end{theorem}
+
+\paragraph{Esempio:}
+L'insieme $L_{\text{id}}$ di tutti gli identificatori di variabile:
+\[A=\{'a',\dots,'z'\}\cup\{'A',\dots,'Z'\}\cup\{'0',\dots,'9'\}\]
+\[L_{\text{id}}=\{'a','b',\dots,'a0','a1',\dots\}\]
+
+\subsection{Composizione di operatori tra linguaggi}
+Le operazioni possono essere di concatenazione o di unione:
+\begin{itemize}
+  \item \textbf{Concatenazione:} $L_1\cdot L_2 = \{u\cdot w|u\in L_1, w\in L_2\}$;
+  \item \textbf{Unione:} $L_1\cup L_2$.
+\end{itemize}
+
+\subsection{Intuizione}
+\subsubsection{Unione}
+$L=L_1\cup L_2$: qualsiasi stringa $L$ è una stringa di $L_1$ o di $L_2$.
+\paragraph{Esempio:}
+\[L^\prime = \{'a',\dots,'z'\}\cup\{'A',\dots,'Z'\} \]
+
+\subsubsection{Concatenazione}
+$L=L_1\cdot L_2$: qualsiasi stringa $L$ è una stringa di $L_1$, seguita da una
+stringa di $L_2$.
+\paragraph{Esempio:}
+\[\{'a','ab'\}\cdot\{\lambda,'1'\}=\{'a','ab','a1','ab1'\}\]
+\[L_{\text{id}}=L^\prime\cdot A^\star \text{ con }A=\{'a',\dots,'z'\}\cup\{'A',\dots,'Z'\}\cup\{'0',\dots,'9'\} \]
+
+\subsection{Monoide}
+La concatenazione è associativa, ma non commutativa.
+
+$A^0(=\{\lambda\})$ è l'identità dell'elemento; quindi $A^0$ \emph{non è
+l'elemento neutro}, l'elemento neuro è $0=\{\}$.
+
+\subsection{Passo induttivo}
+$L^n$ è definito per induzione su $n\in\N$:
+Base: $L^0=A^0(=\{\lambda\}$,
+
+Passo induttivo: $L^{n+1}=L\cdot L^n$.
+
+\subsection{Operatori + e *}
+\begin{itemize}
+  \item \textbf{Addizione:} $L^+=\bigcup_{n>0}L^n$;
+  \item \textbf{Moltiplicazione:} $\star$ viene chiamata \textit{Kleen star,
+    stella di Kleen}.
+    \[L^\star = \bigcup_{n\geq0}L^n\]
+\end{itemize}
+Sono equivalenti $L^\star=L^0\cup L^+$, $L\cdot L^\star$.
+
+\subsubsection{Intuizione}
+\begin{itemize}
+  \item Qualsiasi stringa di $L^+$ è ottenuta concatenando una o più stringhe
+    di $L$;
+  \item Qualsiasi stringa di $L^\star$ è ottenuta concatenando $0$ o più
+    stringhe di $L$: \emph{Concatenando zero stringhe si ottiene la stringa
+    vuota}.
+\end{itemize}
