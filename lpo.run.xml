@@ -44,11 +44,11 @@
   <internal package="biblatex" priority="9" active="0">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>ClassicThesis.aux</file>
-      <file>ClassicThesis-blx.bib</file>
+      <file>lpo.aux</file>
+      <file>lpo-blx.bib</file>
     </provides>
     <requires type="dynamic">
-      <file>ClassicThesis.bbl</file>
+      <file>lpo.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-dm.def</file>
@@ -72,20 +72,20 @@
       <binary>bibtex8</binary>
       <option>--wolfgang</option>
       <option>--min_crossrefs 2</option>
-      <infile>ClassicThesis</infile>
+      <infile>lpo</infile>
     </cmdline>
     <input>
-      <file>ClassicThesis.aux</file>
+      <file>lpo.aux</file>
     </input>
     <output>
-      <file>ClassicThesis.bbl</file>
+      <file>lpo.bbl</file>
     </output>
     <provides type="dynamic">
-      <file>ClassicThesis.bbl</file>
+      <file>lpo.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>ClassicThesis.aux</file>
-      <file>ClassicThesis-blx.bib</file>
+      <file>lpo.aux</file>
+      <file>lpo-blx.bib</file>
     </requires>
     <requires type="editable">
       <file>Bibliography.bib</file>
