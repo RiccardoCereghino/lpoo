@@ -151,7 +151,7 @@
   breaklines=true,
   frameround=ftff,
   frame=single,
-  belowcaptionskip=.75\baselineskip
+  belowcaptionskip=.75\baselineskip,
   frame=L
 }
 % ****************************************************************************************************
@@ -185,6 +185,16 @@
 \usepackage{float}
 \usepackage{wrapfig}
 
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+\pdfsuppresswarningpagegroup=1
 % ********************************************************************
 % Her Majesty herself
 % ********************************************************************

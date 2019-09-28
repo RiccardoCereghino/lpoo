@@ -34,7 +34,7 @@
     \WarningFilter{titlesec}{Non standard sectioning command detected}
 \documentclass[ twoside,openright,titlepage,numbers=noenddot,%1headlines,
                 headinclude,footinclude,cleardoublepage=empty,abstract=on,
-                BCOR=5mm,paper=a4,fontsize=11pt
+                BCOR=5mm,paper=a4,fontsize=11pt,table,usenames,dvipsnames
                 ]{scrreprt}
 
 %********************************************************************
@@ -87,8 +87,8 @@
 %\setcounter{page}{90}
 % use \cleardoublepage here to avoid problems with pdfbookmark
 %\cleardoublepage
-%\part{Principi dei linguaggi di programmazione}\label{pt:struttura}
 \include{Chapters/Chapter01}
+\part{Sintassi}\label{pt:struttura}
 \include{Chapters/Chapter02}
 \include{Chapters/Chapter03}
 %\cleardoublepage

@@ -1,4 +1,3 @@
-session.vim
-Session.vim
+  *.aux
+
 *.aux
-*/*.aux

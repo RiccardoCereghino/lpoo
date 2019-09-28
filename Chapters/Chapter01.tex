@@ -1,37 +1,60 @@
 \chapter{Introduzione agli elementi di un linguaggio di programmazione}\label{ch:elementi}
-I motivi della creazione ed utilizzo di un linguaggio di programmazione di alto
-livello sono di fornire una descrizione precisa, ovvero una specifica formale,
-e di offrire un interpretazione tramite interprete da compilare.
+I motivi della creazione ed utilizzo di un linguaggio di programmazione di
+alto livello sono:
+di fornire una descrizione precisa, ovvero una specifica formale;
+offrire un interpretazione tramite interprete da compilare.
 
-Le parti principali di uno specifico linguaggio sono la sintassi e la semantica,
-la quale può essere statica o dinamica.
+Le caratteristiche principali che categorizzano i linguaggi di
+programmazione sono la sintassi e la semantica, la quale può essere
+statica o dinamica.
 
 \section{Linguaggi staticamente tipati}
-Sono provvisti di semantica statica, legata alla nozione di \emph{tipo statico},
-la compilazione avviene   \emph{prima} dell'esecuzione del programma.
+Nei linguaggi tipizzati staticamente il \emph{tipo} di variabile viene
+stabilito nel codice sorgente, per cui si rende necessario che:
 
-In un linguaggio staticamente tipato, gli operatori e gli \textit{statements}
-devono essere consisenti con il tipo di valore e le variabili devono essere
-dichiarate ed usate consistentemente rispetto la loro dichiarazione.
+\begin{itemize}
+  \item gli operatori e le assegnazioni devono essere usati coerentemente
+    con il \emph{tipo} dichiarato;
+  \item le variabili siano usate consistentemente rispetto la loro
+    dichiarazione.
+\end{itemize}
 
-I vantaggi risiedono nella preventiva rilevazione degli errori e nell'efficienza.
+I vantaggi della staticità risiedono nella preventiva rilevazione degli
+errori e nell'efficienza di calcolo risultante dalla coerenza tra codice
+e compilatore.
 
-\section{Linguaggi di programmazione dinamicamente tipati}
-I linguaggi di programmazione dinamicamente tipati sono compilati \textbf{durante}
-l'esecuzione del programma, non sono provvisti di semantica statica, utilizzano
-inconsistemente operatori, statements e variabilii; ma generano errori dinamici.
-Sono solitamente più semplici ed espressivi.
+\section{Linguaggi dinamicamente tipati}
+Nei linguaggi di programmazione dinamicamente tipati le variabili sono
+assegnate ai \emph{tipi} durente l'esecuzione del programma, ne consegue
+che:
+\begin{itemize}
+  \item la semantica statica non è definita;
+  \item un utilizzo incosistenze di variabili, operazioni o assegnazioni
+    generano errori dinamici basati sui tipi.
+\end{itemize}
+
+I linguaggi dinamici per questi motivi risultano essere più semplici
+ed espressivi.
 
 \subsection{Esempi di errori}
 \begin{lstlisting}[language=Java, caption={Errore di sintassi}]
 x = ;
 \end{lstlisting}
+Un errore sintattico generico a molti linguaggi è un espressione
+formattata erroneamente.
+
 
 \begin{lstlisting}[language=Java, caption={Errore statico}]
 int x=0;
+if(y<0) x=3; else x="three"
 \end{lstlisting}
+In un linguaggio statico come \emph{Java} l'esempio precedente darebbe
+un errore in quanto una stringa non può essere convertita in un tipo
+intero.
 
 \begin{lstlisting}[language=Java, caption={Errore Dinamico}]
 x = null;
 if(y<0) y=1; else y=x.value;
 \end{lstlisting}
+L'esempio, per $y>0$, darebbe un errore dinamico sia in \emph{Java}, che
+in un linguaggio dinamico come \emph{Javascript}.
