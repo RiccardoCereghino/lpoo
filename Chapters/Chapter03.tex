@@ -25,3 +25,123 @@ definire linguaggi semplici.
       allora $e^\star$ è un espressione regolarare di $A$.
   \end{itemize}
 \end{theorem}
+
+\paragraph{Esercizio}
+Scrivere un \textbf{REGEX} che esprima i nomi di variabili permessi.
+\[
+  L_{id} = (\{'a',\dots,'z'\}\cup\{'A',\dots,'Z'\})\cdot
+    \{'a',\dots,'z'\}\cup\{'A',\dots,'Z'\}\cup\{'0',\dots,'9'\}*
+\]
+\[
+  e_{id}=(a|\dots|z|A|\dots|Z)(a|\dots|z|A|\dots|Z|0|\dots|9)*
+\]
+
+\section{Semantica}
+La semantica di un espressione regolare in $A$ è un liguaggio su $A$:
+\begin{itemize}
+  \item $\emptyset \rightsquigarrow$ insieme vuoto;
+  \item $\epsilon \rightsquigarrow \{\epsilon\}$;
+  \item $\sigma \rightsquigarrow \{"\sigma"\},\forall\sigma\in A$;
+  \item $e_1\mid e_2\rightsquigarrow$ unione delle semantiche di $e_1$ ed
+    $e_2$;
+  \item $e_1 e_2\rightsquigarrow$ concatenzatione delle semantiche di $e_1$
+    ed $e_2$.
+\end{itemize}
+
+\section{Sintassi concreta delle espressioni regolari}
+\subsection{Precedenza ed associatività}
+\begin{itemize}
+  \item la \textbf{stella di Kleene} ha priorità sulla concatenzazione e
+    l'unione;
+  \item la concatenazione ha precedemza sull'unione;
+  \item la concatenazione e l'unione sono associative a sinistra.
+\end{itemize}
+
+\subsection{Operatori derivati}
+\begin{itemize}
+  \item $e+=ee+$: (una o più volte e);
+  \item $\epsilon$: è rappresentata dalla stringa vuota: $a|\epsilon$ diventa
+    $a|$;
+  \item $e?=|e$: ($e$ è opzionale, ovvero uno o nessuno);
+  \item $[a0B]$: uno qualsiasi dei caratteri nella quadre ($a|0|B$);
+  \item $[b-d]$: uno qualsiasi dei caratteri nel range tra le quadre ($b|c|d$);
+  \item $[a0B]|[b-d]$: può essere scritto come $[a0Bb-d]$;
+  \item $[\wedge\dots]$: qualsiasi carattere ad eccezioni di $\dots$ (esempio:
+    $[^a0Bb-d]$ qualsiasi carattere ad eccezione di $a,0,B,b,c,d$).
+\end{itemize}
+
+\subsection{Caratteri speciali in JAVA}
+\begin{itemize}
+  \item $.$ rappresenta ogni carattere;
+  \item $\\$ è il carattere di \emph{escape}, per dare un significato speciale
+    ai caratteri regolari, oppure un significato ordinario per caratteri
+    speciali.
+\end{itemize}
+
+\subsubsection{Caratteri speciali cui dare un significato ordinario}
+Esempi:
+\[
+  \backslash|,\backslash*,\backslash+,\backslash?,\backslash.,\backslash\backslash
+\]
+
+\subsubsection{Caratteri cui dare un significato speciale}
+\begin{itemize}
+  \item $\backslash t$: tab;
+  \item $\backslash n$; newline;
+  \item $\backslash s$: qualsiasi spazio vuoto;
+  \item $\backslash S$: qualsiasi spazio non vuoto;
+  \item $\backslash d$: qualsiasi carattere numerico ($[0-9]$);
+  \item $\backslash D$: qualsiasi carattere non numerico
+    ($[\wedge0-9]$);
+  \item $\backslash w$: qualsiasi parola ($[[a-zA-Z_0-9]]$);
+  \item $\backslash W$: qualsiasi carattere che non sia una parola
+    ($[\wedge\backslash w]$).
+\end{itemize}
+
+\begin{theorem}
+  Un linguaggio si dice \emph{regolare} se può essere definito da un'
+  espressione regolare.
+\end{theorem}
+
+\section{Analisi lessicale}
+\begin{theorem}
+  Un \emph{lexeme} è una sottostringa considerata come un'unità sintattica.
+\end{theorem}
+
+\begin{theorem}
+  \emph{L'analisi lessicale} affronta il problema della decomposizione di
+  una stringa in un \emph{lexeme}.
+\end{theorem}
+
+\begin{theorem}
+  Un \emph{lexer} o \emph{scanner} è un programma che esegue l'analisi
+  lessicale e genera \emph{lexemes}.
+\end{theorem}
+
+\paragraph{Esempio in C:}
+La stringa $"x2=042;$ è decomposta nei \emph{lexemes} seguenti:
+\begin{itemize}
+  \item $"x2"$;
+  \item $"="$;
+  \item $"042"$;
+  \item $";"$.
+\end{itemize}
+
+\subsection{Token}
+Un \emph{token} è una nozione di \emph{lexeme} pià astratta; ad un \emph{token}
+corrisponde sempre un \emph{lexeme}.
+
+In alcuni casi un \emph{token} può mantenere informazioni sulla sematica,
+come i valori dei numeri.
+
+Un \emph{tokenizer} è un programma che esegue l'analisi lessicale e genera
+\emph{token}.
+
+\paragraph{Esempio in C:}
+La stringa $"x2=042;"$ è decomposta nei token seguenti:
+\begin{itemize}
+  \item \emph{IDENTIFIER}: con il nome $"x2"$;
+  \item \emph{ASSIGN\_OP};
+  \item \emph{INT\_NUMBER}: con il valore di $34$;
+  \item \emph{STATEMENT\_TERMINATOR}.
+\end{itemize}
