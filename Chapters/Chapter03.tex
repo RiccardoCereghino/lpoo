@@ -73,7 +73,7 @@ La semantica di un espressione regolare in $A$ è un liguaggio su $A$:
 \subsection{Caratteri speciali in JAVA}
 \begin{itemize}
   \item $.$ rappresenta ogni carattere;
-  \item $\\$ è il carattere di \emph{escape}, per dare un significato speciale
+  \item $\backslash$ è il carattere di \emph{escape}, per dare un significato speciale
     ai caratteri regolari, oppure un significato ordinario per caratteri
     speciali.
 \end{itemize}
@@ -81,8 +81,18 @@ La semantica di un espressione regolare in $A$ è un liguaggio su $A$:
 \subsubsection{Caratteri speciali cui dare un significato ordinario}
 Esempi:
 \[
-  \backslash|,\backslash*,\backslash+,\backslash?,\backslash.,\backslash\backslash
+  |,*,+,?,.,,(,),[,],-,\wedge
 \]
+\paragraph{Semantiche:}
+\begin{itemize}
+  \item $\backslash.\rightsquigarrow\{"."\}$,
+  \item $\backslash\backslash\rightsquigarrow\{"\backslash"\}$,
+  \item $.\rightsquigarrow\{s\mid s\text{ ha lunghezza }1\text{, l'insieme di
+    tutti i caratteri} \}$,
+  \item $\backslash\rightsquigarrow$ non è sintatticamente corretto.
+  \item $n\rightsquigarrow\{"n"\}$,
+  \item $\backslash n\rightsquigarrow\{"linefeed"\}$,
+\end{itemize}
 
 \subsubsection{Caratteri cui dare un significato speciale}
 \begin{itemize}
@@ -93,7 +103,7 @@ Esempi:
   \item $\backslash d$: qualsiasi carattere numerico ($[0-9]$);
   \item $\backslash D$: qualsiasi carattere non numerico
     ($[\wedge0-9]$);
-  \item $\backslash w$: qualsiasi parola ($[[a-zA-Z_0-9]]$);
+  \item $\backslash w$: qualsiasi parola ($[[a-zA-Z\_0-9]]$);
   \item $\backslash W$: qualsiasi carattere che non sia una parola
     ($[\wedge\backslash w]$).
 \end{itemize}
@@ -145,3 +155,40 @@ La stringa $"x2=042;"$ è decomposta nei token seguenti:
   \item \emph{INT\_NUMBER}: con il valore di $34$;
   \item \emph{STATEMENT\_TERMINATOR}.
 \end{itemize}
+
+\section{Linguaggi regolari}
+\begin{theorem}
+  Un \emph{linguaggio regolare} è un linguaggui definibile con un espressione
+  regolare.
+
+  I \emph{linguaggi regolari} possono essere definiti in altre maniere
+  equivalenti:
+  \begin{itemize}
+    \item con una grammatica regolare a destra o sinistra, anche chiamata
+      \emph{lineare};
+    \item con una serie di \emph{automata} non deterministica o deterministica
+      finita (\textbf{NFA} o \textbf{DFA}).
+  \end{itemize}
+\end{theorem}
+\subsection{Limitazioni}
+I linguaggi regolari sono linguaggi semplici. Esempio:
+\begin{itemize}
+  \item il linguaggio degli identificatori;
+  \item il linguaggio dei numeri.
+\end{itemize}
+
+Le espressioni regolari possono definire le unità che costituiscono la
+sintassi di un linguaggio di programmazione, ma non possono definire la
+sintassi dell'intero linguaggio.
+
+\subsection{Esempi di linguaggi non regolari}
+Il linguaggio di espressioni con numeri naturali, addizione binaria e
+moltiplicazione e parentesi \textbf{non possono} essere definiti da un
+espressione regolare:
+il  problema è posto dalle parentesi, per cui se venissero rimosse, allora il
+linguaggio sarebbe regolare.
+
+Un altro esempio di linguaggio semplice non regolare:
+\[
+  \{"a"^n"b"^n\mid n\in\N\}=\{"","ab","aabb","aaabbb",\dots\}.
+\]
