@@ -1,0 +1,81 @@
+\chapter{Analisi sintattica}
+\begin{theorem}
+  L' \textbf{analisi sintattica} è definita sull'analisi lessicale, risolve:
+  \begin{itemize}
+    \item il riconoscimento di una sequenza di \emph{lexems/tokens} come
+      validi se rispettano alcune regole sintattiche;
+    \item la costruzione, in caso di successo, di una rappresentazione
+      astratta della sequenza riconosciuta per eseguire delle operazioni su
+      di essa.
+  \end{itemize}
+\end{theorem}
+
+\section{Parser}
+\begin{theorem}
+  Un \textbf{parser} è un programma che esegue l'analisi sintattica.
+\end{theorem}
+
+\subsection{Parsers per i linguaggi di programmazione}
+I parser per i linguaggi di programmazione, riconoscono i \emph{token}
+generati da un \emph{tokenizer}, mentre le regole sintattiche sono definite
+formalmente da una \emph{grammatica}.
+
+I parser generano:
+\begin{itemize}
+  \item un albero \textbf{parse/deviation}, una rappresentazione meno astratta
+    della sequenza analizzata;
+  \item un \textbf{albero sintattico astratto} (abstract syntax tree, AST),
+    una rappresentazione pi
+     astratta della sequenza analizzata.
+\end{itemize}
+
+Inoltre i parser possono essere scritti a mano, oppure generati automaticamente
+da una grammatica con specifici software come \emph{ANTLR} o \emph{BISON}.
+
+\paragraph{Primo esempio con sintassi C/Java/C++}
+Token analizzati:
+\begin{itemize}
+  \item \emph{IDENTIFIER}: con il nome $"x2"$;
+  \item \emph{ASSIGN\_OP};
+  \item \emph{INT\_NUMBER}: con il valore di $34$;
+  \item \emph{STATEMENT\_TERMINATOR}.
+\end{itemize}
+
+Il parser ritornerà errore dato che la sequenza non è riconosciuta oppure
+uno o più messaggi di errore sono presenti.
+
+
+\paragraph{Secondo esempio con sintassi C/Java/C++}
+Token analizzati:
+\begin{itemize}
+  \item \emph{IDENTIFIER}: con il nome $"x2"$;
+  \item \emph{ASSIGN\_OP};
+  \item \emph{INT\_NUMBER}: con il valore di $34$;
+  \item \emph{ADD\_OP};
+  \item \emph{INT\_NUMBER}: con il valore di $10$;
+  \item \emph{STATEMENT\_TERMINATOR}.
+\end{itemize}
+
+Il parser riconosce la sequenza e genera un \emph{AST}.
+
+\begin{figure}[ht]
+    \centering
+    \incfig{ast}
+    \caption{L'AST generato della sequenza precedente.}
+    \label{fig:ast-2}
+\end{figure}
+
+\section{Context free (CF) grammars}
+Le grammatiche \emph{context free}, sono il formalismo più diffuso per definire
+le regole sintattiche di un linguaggio di programmazione.
+Sono più espressive di un espressione regolare e sono basate sulla
+concatenazione d unzione di più nomi e su definizioni ricorsive.
+
+\paragraph{Un primo esempio:}
+Una grammatica \textbf{CF} per espressioni semplici:
+\begin{lstlisting}[language=Java, caption={CF per espressioni semplici}]
+Exp ::= Num | Exp '+' Exp | Exp '*' Exp | '(' Exp ')'
+Num ::= '0' | '1'
+\end{lstlisting}
+
+
