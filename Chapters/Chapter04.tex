@@ -64,18 +64,3 @@ Il parser riconosce la sequenza e genera un \emph{AST}.
     \caption{L'AST generato della sequenza precedente.}
     \label{fig:ast-2}
 \end{figure}
-
-\section{Context free (CF) grammars}
-Le grammatiche \emph{context free}, sono il formalismo più diffuso per definire
-le regole sintattiche di un linguaggio di programmazione.
-Sono più espressive di un espressione regolare e sono basate sulla
-concatenazione d unzione di più nomi e su definizioni ricorsive.
-
-\paragraph{Un primo esempio:}
-Una grammatica \textbf{CF} per espressioni semplici:
-\begin{lstlisting}[language=Java, caption={CF per espressioni semplici}]
-Exp ::= Num | Exp '+' Exp | Exp '*' Exp | '(' Exp ')'
-Num ::= '0' | '1'
-\end{lstlisting}
-
-

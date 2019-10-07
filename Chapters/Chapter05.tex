@@ -1,0 +1,185 @@
+\chapter{Context free (CF) grammars}
+Le grammatiche \emph{context free}, sono il formalismo più diffuso per definire
+le regole sintattiche di un linguaggio di programmazione.
+Sono più espressive di un espressione regolare e sono basate sulla
+concatenazione d unzione di più nomi e su definizioni ricorsive.
+
+\paragraph{Un primo esempio:}
+\begin{lstlisting}[language=Java, caption={Una grammatica \textbf{CF} per espressioni semplici}]
+Exp ::= Num | Exp '+' Exp | Exp '*' Exp | '(' Exp ')'
+Num ::= '0' | '1'
+\end{lstlisting}
+
+\paragraph{Da notare che:}
+\emph{Num} è definito nella grammatica solo per completezza, infatti i token
+\emph{Num} sono definiti separatamente da un espressione regolare.
+
+\begin{lstlisting}[language=Java, caption={Esempio rivisitato di una grammatica
+\textbf{CF} per espressioni semplici}]
+Exp ::= Num | Exp '+' Exp | Exp '*' Exp | '(' Exp ')'
+NUM definito da 0|1
+\end{lstlisting}
+
+\paragraph{Notazione:}
+In \emph{Exp} è maiuscolo solo il primo carattere: è definito nella grammatica.
+In \emph{NUM} tutte le lettere sono maiuscole; è definito separatamente da un
+espressione regolare.
+
+\section{Terminologia delle grammatiche CF}
+\begin{lstlisting}[language=Java, caption={Esempio}]
+Exp ::= Num | Exp '+' Exp | Exp '*' Exp | '(' Exp ')'
+Num ::= '0' | '1'
+\end{lstlisting}
+
+\subsection{Terminologia per la grammatica G}
+Per $G=(T,N,P)$:
+\begin{itemize}
+  \item $\{'+','*','(',')','0','1'\}$ è l'insieme $T$ dei \textbf{simboli
+    terminali};
+  \item $\{Exp,Num\}$ sono l'insieme $N$ di simboli \textbf{non terminali};
+  \item $\{(Exp,Num),(Exp,Exp,'+'Exp),(Exp,Exp '*'Exp),(Exp,'('Exp')'),(Num,'0'
+    ),(Num,'1')\}$ è l'insieme $P$ di produzioni.
+\end{itemize}
+\paragraph{Da notare che:}
+\begin{itemize}
+  \item ogni simbolo non terminale corrisponde ad un linguaggio; i linguaggi
+    sono definiti come unioni di concatenazioni;
+  \item i simboli terminali sono \emph{lexems} dei linguaggi definiti dalla
+    grammatica;
+  \item le produzioni hanno forma $(B,\alpha)$, per $B\in\N\cap\alpha\in
+    (T\cup N)^*$
+\end{itemize}
+
+\section{Grammatiche come definizione induttiva di linguaggi}
+\subsection{Primo esempio}
+\begin{lstlisting}[language=Java, caption={Esempio}]
+Exp ::= Num | Exp '+' Exp | Exp '*' Exp | '(' Exp ')'
+Num ::= '0' | '1'
+\end{lstlisting}
+
+\subsubsection{Definizione induttiva di linguaggi}
+\[
+  Exp=Num\cup(Exp\cdot\{"+"\}\cdot Exp)\cup(Exp\cdot\{"*"\}\cdot Exp)\cup(\{"("
+  \}\cdot Exp\cdot\{")"\})
+\]
+\[
+  Num=\{"0"\}\cup\{"1"\}
+\]
+
+\paragraph{Da notare che:}
+\begin{itemize}
+  \item $Exp=Num\cup\dots$ è il caso base per $Exp$: un numero è un
+    espressione;
+  \item $Exp$ è definito su di $Num$, $Num$ è definito esclusivamente per casi
+    base.
+\end{itemize}
+
+\subsection{Secondo esempio}
+\begin{lstlisting}[language=Java, caption={Esempio}]
+Exp ::= Term | Exp '+' Term | Exp '*' Term
+Term ::= '(' Exp ')' | Num
+Num ::= '0' | '1'
+\end{lstlisting}
+
+\paragraph{Da notare che:}
+Le definizioni di $Exp$ e $Term$ sono ricorsive reciprocamente.
+
+\section{Derivazioni}
+\begin{lstlisting}[language=Java, caption={Esempio}]
+Exp ::= Num | Exp '+' Exp | Exp '*' Exp | '(' Exp ')'
+Num ::= '0' | '1'
+\end{lstlisting}
+
+\subsection{Linguaggi generati da una grammatica}
+\begin{itemize}
+  \item Una grammatica genera un linguaggio per ogni simbolo non terminale;
+  \item la grammatica precedente genera due linguaggi $L_{\text{Exp}}$ e
+    $L_{\text{Num}}$;
+  \item il linguaggio per $Num$ è relativamente semplice: $L_{\text{Num}}=
+    \{"0","1"\}$.
+\end{itemize}
+
+\paragraph{Da notare che:}
+per definire $L_{\text{Num}}$ e per dimostrare che $"1+0"\in L_{\text{Exp}}$ e
+che $"1+*("\not\in L_{\text{Exp}}$ si rendono necessarie la \textbf{derivazione
+a passo singolo e la derivazione a passi multipli}.
+
+\subsection{Derivazione ad un passo}
+\begin{itemize}
+  \item $Exp\rightarrow Exp'*'Exp$ è usata la produzione $(Exp,Exp '*'Exp)$;
+  \item $Exp'*'Exp\rightarrow Num'*'Exp$ è usata la produzione $(Exp,Num)$;
+  \item $Num'*'Exp\rightarrow Num'*'Num$ è usata la produzione $(Exp,Num)$;
+  \item $Num'*'Num\rightarrow '0''*'Num$ è usata la produzione $(Num,'0')$;
+  \item $'0''*'Num\rightarrow '0''*''1'$ è usata la produzione $(Num,'1')$;
+\end{itemize}
+
+\paragraph{Da notare che:}
+Non esiste alcuna derivazione da $'0''*''1'$ dato che nessuna produzione può
+essere usata; $'0''*''1'$ è la stringa $0*1$ che appartiene a $L_{\text{Exp}}$.
+
+\subsection{Definizioni di derivazione}
+\subsubsection{Derivazione ad un passo}
+\begin{theorem}
+  La derivazione ad un passo per la grammatica $G=(T,N,P)$:
+  \begin{itemize}
+    \item possiede una forma $\alpha_1 B\alpha_2\rightarrow\alpha_1\gamma
+      \alpha_2$;
+    \item $\alpha_1,\alpha_2\in(T\cup N)^*$;
+    \item $(B,\gamma)\in P$ ovvero $(B,\gamma)$ in produzione.
+  \end{itemize}
+\end{theorem}
+
+\subsubsection{Derivazione a più passi}
+\begin{theorem}
+  La chiusura transitiva di $\rightarrow$:
+  \begin{itemize}
+    \item il caso base: se $\gamma_1\rightarrow\gamma_2$, allora $\gamma_1
+      \rightarrow^+\gamma_2$;
+    \item caso induttivo: se $\gamma_1\rightarrow\gamma_2$, e $\gamma_2
+      \rightarrow^+\gamma_3$, allora $\gamma_1\rightarrow^+\gamma_3$.
+  \end{itemize}
+\end{theorem}
+
+\subsubsection{Linguaggio generato}
+Il linguaggio $L_B$ generato da $G=(T,N,P)$ per i non terminali $B\in N$:
+\begin{itemize}
+  \item tutte le stringhe di terminali che possono essere derivati in uno
+    o più passaggi da $B$;
+  \item formalmente: $L_B=\{u\mid B\rightarrow^+ u\}$.
+\end{itemize}
+
+\subsection{Albero di derivazione (parse tree)}
+\paragraph{Osservazione 1}
+Le grammatiche CF sono utilizzate per definire linguaggi ed implementare
+parsers, i parsers dovrebbero generare gli alberi, ma le derivazioni non
+sono alberi.
+
+\paragraph{Osservazione 2}
+Un passo di derivazione è determinato da:
+\begin{itemize}
+  \item la produzione usata;
+  \item lo specifico simbolo non termitale che rimpiazza.
+\end{itemize}
+Quest'ultimo punto non influenza la stringa finale dei terminali ottenuti
+dalla derivazione.
+
+\paragraph{Intuizione}
+Un albero di derivazione è una generalizzazione di una derivazione a più
+passaggi in modo che la stringa derivata contenga solo terminali e che i non
+terminali siano rimpiazzati in parallelo.
+
+\subsection{Esempi di alberi di derivazione (ANTLR)}
+\begin{lstlisting}[language=Java, caption={Grammatica ANTLR}]
+grammar SimpleExp;
+
+Exp ::= Num | Exp '+' Exp | Exp '*' Exp | '(' Exp ')'
+Num ::= '0' | '1'
+\end{lstlisting}
+
+\subsubsection{Albero di derivazione per "1*1+1"}
+\begin{figure}[ht]
+    \centering
+    \incfig{dtree-1}
+    \caption{Albero di derivazione per "1*1+1""}
+    \label{fig:dtree-1}
+\end{figure}
