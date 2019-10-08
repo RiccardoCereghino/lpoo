@@ -147,39 +147,3 @@ Il linguaggio $L_B$ generato da $G=(T,N,P)$ per i non terminali $B\in N$:
     o più passaggi da $B$;
   \item formalmente: $L_B=\{u\mid B\rightarrow^+ u\}$.
 \end{itemize}
-
-\subsection{Albero di derivazione (parse tree)}
-\paragraph{Osservazione 1}
-Le grammatiche CF sono utilizzate per definire linguaggi ed implementare
-parsers, i parsers dovrebbero generare gli alberi, ma le derivazioni non
-sono alberi.
-
-\paragraph{Osservazione 2}
-Un passo di derivazione è determinato da:
-\begin{itemize}
-  \item la produzione usata;
-  \item lo specifico simbolo non termitale che rimpiazza.
-\end{itemize}
-Quest'ultimo punto non influenza la stringa finale dei terminali ottenuti
-dalla derivazione.
-
-\paragraph{Intuizione}
-Un albero di derivazione è una generalizzazione di una derivazione a più
-passaggi in modo che la stringa derivata contenga solo terminali e che i non
-terminali siano rimpiazzati in parallelo.
-
-\subsection{Esempi di alberi di derivazione (ANTLR)}
-\begin{lstlisting}[language=Java, caption={Grammatica ANTLR}]
-grammar SimpleExp;
-
-Exp ::= Num | Exp '+' Exp | Exp '*' Exp | '(' Exp ')'
-Num ::= '0' | '1'
-\end{lstlisting}
-
-\subsubsection{Albero di derivazione per "1*1+1"}
-\begin{figure}[ht]
-    \centering
-    \incfig{dtree-1}
-    \caption{Albero di derivazione per "1*1+1""}
-    \label{fig:dtree-1}
-\end{figure}

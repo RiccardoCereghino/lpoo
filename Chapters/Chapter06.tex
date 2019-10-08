@@ -1,0 +1,101 @@
+\section{Albero di derivazione (parse tree)}
+\paragraph{Osservazione 1}
+Le grammatiche CF sono utilizzate per definire linguaggi ed implementare
+parsers, i parsers dovrebbero generare gli alberi, ma le derivazioni non
+sono alberi.
+
+\paragraph{Osservazione 2}
+Un passo di derivazione è determinato da:
+\begin{itemize}
+  \item la produzione usata;
+  \item lo specifico simbolo non termitale che rimpiazza.
+\end{itemize}
+Quest'ultimo punto non influenza la stringa finale dei terminali ottenuti
+dalla derivazione.
+
+\paragraph{Intuizione}
+Un albero di derivazione è una generalizzazione di una derivazione a più
+passaggi in modo che la stringa derivata contenga solo terminali e che i non
+terminali siano rimpiazzati in parallelo.
+
+\subsection{Esempi di alberi di derivazione (ANTLR)}
+\begin{lstlisting}[language=Java, caption={Grammatica ANTLR}]
+grammar SimpleExp;
+
+Exp ::= Num | Exp '+' Exp | Exp '*' Exp | '(' Exp ')'
+Num ::= '0' | '1'
+\end{lstlisting}
+
+\subsubsection{Albero di derivazione per "1*1+1"}
+\begin{figure}[h]
+    \centering
+    \incfig{dtree-1}
+    \caption{Albero di derivazione per "1*1+1""}
+    \label{fig:dtree-1}
+\end{figure}
+
+\paragraph{Esercizio:}
+Mostrare che $"1*1+1"\in L_{\text{Exp}}$ usando la nozione di
+derivazione ad uno o più passi.
+\[
+  Exp\rightarrow Exp'+'Exp\rightarrow^+ Exp\times Exp'+'Num'
+  \rightarrow^+ Num'*'Num'+'1'
+  \rightarrow^+ \text{'1' '*' '1' '+' '1'}
+\]
+\paragraph{Esercizio:}
+Mostrare che $"1+(\not\in L_{\text{Exp}}$:
+\[
+  Exp\rightarrow Exp '*' Exp\rightarrow^+ Num '*' Exp '+' Exp \rightarrow^+
+\text{'1' '*' Num '+' Num}\rightarrow^+\text{'1' '*' '1' '+' '1'}
+\]
+
+\subsection{Definizione di albero di derivazione in G=(T,N,P)}
+Albero di derivazione per $u\in T^*$ partendo da $B\in N$.
+\begin{itemize}
+  \item se un nodo è etichettato da $C$ ed ha $n$ figli $I_1,\dots,I_n$,
+    allora $(C,I_1,\dots,I_n)\in P$ (ovvero, $(C,I_1,\dots,I_n)$ è una
+    produzione di $G$;
+  \item la radice è etichettata da $B$;
+  \item $u$ è ottenuto dalla concatenaziona da sinistra a destra dii tutte le
+    etichette terminali (nodi foglia).
+\end{itemize}
+
+\subsubsection{Definizione equivalente di un linguaggio generato}
+Il linguaggio $L_B$ generato da $G=(T,N,P)$ per un non terminale $B\in N$ è
+composto da tutte le stringhe $u$ di terminali così che esiste un albero di
+derivazione per $u$ partendo da $B$.
+
+\subsection{Grammatiche ambigue}
+\begin{theorem}
+  Una grammatica $G=(T,N,P)$ è ambigua per $B\in N$ se esitono due differenti
+  alberi di derivazione partendo da $B$ per la stessa stringa.
+\end{theorem}
+
+Per esempio la grammatica $1+1+1$ è ambigua a seconda delle parentesi.
+
+\subsubsection{Soluzioni per l'ambiguità}
+Per risolvere il problema dell'ambiguità si può cambiare la sintassi:
+\begin{lstlisting}[language=Java, caption={Notazione prefissa}]
+Exp ::= Num | '+' Exp Exp | '*' Exp Exp
+Num ::= '0' | '1'
+\end{lstlisting}
+
+In questo caso esiste un unico albero di derivazione per $"1 1+1*$ e le
+parentesi non sono più necessarie.
+
+
+\begin{lstlisting}[language=Java, caption={Notazione postfissa}]
+Exp ::= Num | Exp Exp '+' | Exp Exp '*'
+Num ::= '0' | '1'
+\end{lstlisting}
+
+In questo caso esiste di nuovo un unico albero di derivazione e le parentesi
+sono di nuovo non necessarie.
+ 
+
+\begin{lstlisting}[language=Java, caption={Notazione funzionale}]
+Exp ::= Num | 'add' '(' Exp ',' Exp ')' | 'mul' '(' Exp ',' Exp ')'
+Num ::= '0' | '1'
+\end{lstlisting}
+
+In questo esempio esiste un unico albero di derivazione per $add(1,mul(1,1)$.
