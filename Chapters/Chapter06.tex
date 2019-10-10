@@ -64,38 +64,3 @@ Albero di derivazione per $u\in T^*$ partendo da $B\in N$.
 Il linguaggio $L_B$ generato da $G=(T,N,P)$ per un non terminale $B\in N$ è
 composto da tutte le stringhe $u$ di terminali così che esiste un albero di
 derivazione per $u$ partendo da $B$.
-
-\subsection{Grammatiche ambigue}
-\begin{theorem}
-  Una grammatica $G=(T,N,P)$ è ambigua per $B\in N$ se esitono due differenti
-  alberi di derivazione partendo da $B$ per la stessa stringa.
-\end{theorem}
-
-Per esempio la grammatica $1+1+1$ è ambigua a seconda delle parentesi.
-
-\subsubsection{Soluzioni per l'ambiguità}
-Per risolvere il problema dell'ambiguità si può cambiare la sintassi:
-\begin{lstlisting}[language=Java, caption={Notazione prefissa}]
-Exp ::= Num | '+' Exp Exp | '*' Exp Exp
-Num ::= '0' | '1'
-\end{lstlisting}
-
-In questo caso esiste un unico albero di derivazione per $"1 1+1*$ e le
-parentesi non sono più necessarie.
-
-
-\begin{lstlisting}[language=Java, caption={Notazione postfissa}]
-Exp ::= Num | Exp Exp '+' | Exp Exp '*'
-Num ::= '0' | '1'
-\end{lstlisting}
-
-In questo caso esiste di nuovo un unico albero di derivazione e le parentesi
-sono di nuovo non necessarie.
- 
-
-\begin{lstlisting}[language=Java, caption={Notazione funzionale}]
-Exp ::= Num | 'add' '(' Exp ',' Exp ')' | 'mul' '(' Exp ',' Exp ')'
-Num ::= '0' | '1'
-\end{lstlisting}
-
-In questo esempio esiste un unico albero di derivazione per $add(1,mul(1,1)$.
