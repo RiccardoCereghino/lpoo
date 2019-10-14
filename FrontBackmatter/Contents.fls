@@ -1,0 +1,6 @@
+PWD /home/rick/uni/lpoo/FrontBackmatter
+INPUT /usr/share/texmf-dist/web2c/texmf.cnf
+INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
+INPUT Contents.tex
+OUTPUT Contents.log
+OUTPUT Contents.pdf

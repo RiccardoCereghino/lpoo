@@ -117,3 +117,85 @@ la produzione è ($AddSeq$, $'+'$ $Mul$).
       }
     };
 \end{tikzpicture}}\end{figure}
+
+\section{Grammatiche EBNF}
+La notazione \textbf{BNF} estende la notazione postfissa con gli operatori:
+$*,+,?$.
+La grammatica precedente può essere trasformata in una grammatica più semplice
+utilizzando la notazione \textbf{EBNF}.
+
+\begin{lstlisting}[language=Java, caption={Soluzione completa utilizando la gammatica ENBNF}]
+  Exp ::= Mul | ('+' Mul)*
+  Mul ::= Atom ('*' Atom)*
+  Atom ::= Num | '(' Exp ')'
+  Num ::= '0' | '1'
+\end{lstlisting}
+
+\subsection{Da una grammatica ad un parser top-down}
+Per semplicità consideriamo solamente il problema del riconoscimento del
+linguaggio, \textbf{top-down} significa che il \emph{parse tree} è costruito
+dalla radice, l'albero di generazione sarà considerato nei laboratori.
+
+\paragraph{Assunzioni sul tokenizer}
+Il tokenizer definisce le procedure seguenti:
+\begin{itemize}
+  \item \textit{nextToken()}: la lettura del successivo \emph{lookahead token};
+  \item \textit{tokenType()}: il tipo del token corrente;
+  \item \textit{checkTokenType()}: il tipo del token corrente è controllatom
+    un eccezione viene sollevata se il controllo fallisce, altrimenti viene
+    letto il token successivo.
+\end{itemize}
+
+\subparagraph{Linee guida}
+Il codice del parser proviene direvvamente dalla grammatica, struttura
+ricorsiva inclusa, il parser consiste in una procedura principale insieme ad
+una procedura per ogni simbolo non terminale della grammatica.
+
+\begin{lstlisting}[language=Java, caption={Pseudocodice detivara dalla grammatica EBNF precedente}]
+parse(){
+  nextToken()
+  parseExp()
+  checkTokenType(EOS)
+}
+parseExp(){
+  parseMul()
+  while(tokenType()==ADD){
+    nextToken()
+    parseMul()
+  }
+}
+parseMul(){
+  parseAtom()
+  while(tokenType()==MUL){
+    nextToken()
+    parseAtom()
+  }
+}
+parseAtom(){
+  if(tokenType()==OPEN_PAR){
+    nextToken()
+    parseExp()
+    checkTokenType(CLOSE_PAR)
+  }
+  else
+    checkTokenType(NUM)
+  nextToken()
+}
+\end{lstlisting}
+
+\subsubsection{Grammatica EBNF per operatori con associatività a destra}
+\begin{lstlisting}[language=Java, caption={Grammatica non ambigua}]
+  // * con precedenza maggiore, sia + che * sono associativi a destra
+  Exp ::= Mul | Mul '+' Exp
+  Mul ::= Atom | Atom '*' Mul
+  Atom ::= Num | '(' Exp ')'
+  Num ::= '0' | '1'
+\end{lstlisting}
+\begin{lstlisting}[language=Java, caption={Grammatica EBNF equivalente}]
+  Exp ::= Mul | ('+' Exp)?
+  Mul ::= Atom ('*' Mul)*
+  Atom ::= Num | '(' Exp ')'
+  Num ::= '0' | '1'
+\end{lstlisting}
+
+
