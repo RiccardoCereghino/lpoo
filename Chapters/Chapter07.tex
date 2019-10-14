@@ -134,7 +134,7 @@ parentesi.
   \centering
   \resizebox{.5\textwidth}{!}{%
 \begin{tikzpicture}[sibling distance=4em,
-  every node/.style = {shape=rectangle, rounded corners, draw, align=center}]]
+  every node/.style = {shape=rectangle, rounded corners, draw, align=center}]
   \node {exp}
     child { node{atom}
       child { node {num}
@@ -197,3 +197,82 @@ sono permesse solo se circondate da parentesi.
 Stmt ::= ID '=' Exp | 'if' '(' Exp ')' Stmt | Stmt ';' Stmt | '{' Stmt '}'
 Exp ::= ID | BOOL // ID e BOOL sono definiti da espressioni regolari
 \end{lstlisting}
+
+\begin{figure}[H]
+  \caption{Primo esempio di albero di derivazione per "if(x) x=false;y=true"}
+  \centering\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  level 1/.style = {sibling distance=8em},   % <-- added
+  level 2/.style = {sibling distance=4em},    % <-- added
+  level 3/.style = {sibling distance=2em},    % <-- added
+  every node/.style = {
+    shape=rectangle,
+    rounded corners,
+    draw,
+    align=center
+  }]
+  \node {stmt}
+    child { node {stmt}
+      child { node {if} }
+      child { node {$($} }
+      child { node {exp}
+        child { node {x} }
+      }
+      child { node {$)$} }
+      child { node {stmt}
+        child { node {x}}
+        child { node {=} }
+        child { node {exp}
+          child { node {false} }
+        }
+      }
+    }
+    child { node {;} }
+    child { node {stmt}
+      child { node {y} }
+      child { node {=} }
+      child { node {exp}
+        child { node {true} }
+      }
+    };
+\end{tikzpicture}}\end{figure}
+\begin{figure}[H]
+  \caption{Secondo esempio di albero di derivazione per "if(x) x=false;y=true"}
+  \centering\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  level 1/.style = {sibling distance=4em},   % <-- added
+  level 2/.style = {sibling distance=4em},    % <-- added
+  level 3/.style = {sibling distance=2em},    % <-- added
+  every node/.style = {
+    shape=rectangle,
+    rounded corners,
+    draw,
+    align=center
+  }]
+  \node {stmt}
+    child { node {if} }
+    child { node {$($} }
+    child { node {exp}
+      child { node {x} }
+    }
+    child { node {$)$} }
+    child { node {stmt}
+      child { node {stmt}
+        child { node {x} }
+        child { node {=} }
+        child { node {exp}
+          child { node {false} }
+        }
+      }
+    }
+    child { node {;} }
+    child { node {stmt}
+      child { node {y} }
+      child { node {=} }
+      child { node {exp}
+        child { node {true} }
+      }
+    };
+\end{tikzpicture}}\end{figure}
+
+
