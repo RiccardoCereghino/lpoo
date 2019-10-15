@@ -1,0 +1,138 @@
+\chapter{Paradigmi di programmazione}
+\begin{theorem}
+  I paradigmi di programmazione sono lo stile/approccio nell'utilizzo di un
+  linguaggio di programmazione.
+\end{theorem}
+
+Il più delle volte un paradigma di programmazione è basato un un modello
+computazionale emergente.
+
+\paragraph{Esempi principali di paradigmi}
+\begin{itemize}
+  \item \textbf{Imperativi:} più vicini al modello hardware, quindi basati
+    sulle nozioni di istruzione e stato, dei linguaggi di esempio sono:
+    \begin{itemize}
+      \item \textit{proceduali:} C;
+      \item \textit{orientati agli oggetti:} Java;
+    \end{itemize}
+  \item \textbf{dichiarativi:} basati su un modello astratto, esempi di
+    linguaggi sono:
+    \begin{itemize}
+      \item \textit{funzionali:} \emph{ML}, basati sulla nozione di
+        \emph{definizione di funzione} e \emph{applicazione di funzione};
+      \item \textit{logici:} \emph{Prolog}, basati sulla nozione di \emph{
+        regola logica} e \emph{query}.
+    \end{itemize}
+\end{itemize}
+
+Di solito i linguaggi di programmazione implementano più di un paradigma per
+favorire la flessibilità, \emph{Java, Javascript, Python} supportano sia
+i paradigmi imperativi che quelli dichiarativi.
+
+\section{Paradigma completamente funzionale}
+Caratteristiche:
+\begin{itemize}
+  \item \textbf{programma:} le definizioni di funzioni matematiche ed un
+    espressione principale;
+  \item \textbf{computazione:} l'applicazione della funzione (\emph{function
+    call});
+  \item \textbf{nessuna nozione di stato:} nessun assegnamento di variabili,
+    più in generale nessuno \emph{statement}, solo \emph{espressioni};
+  \item \textbf{variabili:} parametri di funzioni o variabili locali
+    contenenti valori costanti.
+\end{itemize}
+
+Terminologia:
+\begin{itemize}
+  \item \textbf{higher order functions:} funzioni che possono accettare
+    funzioni come argomenti e possono ritornare funzioni;
+  \item \textbf{lambda expression/fuunction o anonymous functions:} funzioni
+    ottenuto dall'evaluazione di un espressione.
+\end{itemize}
+
+\paragraph{Le funzioni sono valori di prima classe:}
+un evaluazione di espressioni può dare come risultato un altra espressione 
+(first class values).
+
+\section{OCaml}
+OCaml deriva da \textbf{ML}, è un linguaggio multi-paradigma con un approccio
+puramente funzionale, è staticamente tipato con inferenza di tipo:
+\begin{itemize}
+  \item gli errori di tipo sono rilevati staticamente;
+  \item i tipi possono essere omessi nei programmi.
+\end{itemize}
+
+\begin{lstlisting}[language=Caml, caption={Sintassi}]
+Exp ::= ID | NUM | Exp Exp | 'fun' Pat+ '->' Exp | UOP Exp | Exp BOP Exp | '(' Exp ')'
+Pat ::= ID // pattern semplificato
+\end{lstlisting}
+
+\paragraph{Commenti:}
+\begin{itemize}
+  \item \textbf{ID} rappresenta gli identificatori di variabile $[a-zA-Z\_]
+    [\backslash w']*$;
+  \item \textbf{NUM} rappresenta i numeri naturali:
+    \[
+      0[bB][01][01\_]*|0[oO][0-7][0-7\_]*|0[xX][0-9a-fA-F][0-9a-fA-F\_]*|\backslash d[\backslash d\_]*
+    \];
+  \item \textbf{UOP} rappresenta operatori aritmetici unari $[+-]$;
+  \item \textbf{BOP} rappresenta operatori aritmetici binari $[+-*\backslash]|mod$;
+  \item \textbf{Pat} rappresenta i patterns, per semplicità si possono
+    associare agli identificatori.
+\end{itemize}
+
+\subsection{Funzioni ed applicazioni}
+\begin{itemize}
+  \item esempi di funzioni anonime:
+    \begin{lstlisting}[language=Caml, caption={Esempio di funzioni anonime}]
+    fun x -> x+1 (* funzione di incremento *)
+    fun x y -> x+y (* funzione di addizione *)
+    \end{lstlisting}
+  \item applicazione di funzioni:
+    \begin{lstlisting}[language=Caml, caption={Esempio di applicazione di funzioni}]
+    (fun x -> x+1) 3 (* il risultato sara 4 *)
+    \end{lstlisting}
+\end{itemize}
+
+Inoltre prendendo in esempio:
+\begin{lstlisting}[language=Caml, caption={Esempio di applicazioni}]
+  exp1 exp2
+\end{lstlisting}
+\begin{itemize}
+  \item l'evaluazione di \textbf{exp1} si aspetta come valore di ritorno una
+    funzione $f$;
+  \item l'evaluazione di \textbf{exp2} si aspetta come valore di ritorno un
+    argomento valido $a$;
+  \item l'evaluazione di \textbf{exp1 exp2} ritorna $f(a)$ ($f$ applicato ad
+    $a$).
+\end{itemize}
+
+\subsection{Regole di precedenza ed associatività}
+\begin{itemize}
+  \item Si usano le regole standard per le espressioni aritmetiche;
+  \item l'applicazione è associativa a sinistra:
+    \begin{lstlisting}[language=Caml, caption={Esempio di associatività}]
+    (fun x y -> x+y) 3 4 (* equivale a ((fun x y -> x+y) 3) 4 *)
+    \end{lstlisting}
+  \item l'applicazione ha precedenza maggiore rispetto gli operatori binari:
+    \begin{lstlisting}[language=Caml, caption={Esempio di precedenza}]
+    (fun x -> x*2) 1+2 (* equivale a ((fun x -> x*2) 1) +2 *)
+    1+(fun x -> x*2) 1+2 (* equivale a 1+((fun x -> x*2) 1) +2 *)
+    \end{lstlisting}
+  \item le funzioni anonime hanno piorità più bassa rispetto le applicazioni
+    e gli operatori binari:
+    \begin{lstlisting}[language=Caml, caption={Esempio di precedenza}]
+    fun x -> x*2 (* equivale a fun x -> x*2) *)
+    fun f a -> f a (* equivale a fun f a -> (f a) *)
+    \end{lstlisting}
+  \item i casi limite:
+    \begin{lstlisting}[language=Caml, caption={Casi limite di precedenza}]
+    f + 3 (* addizione *)
+    f (+3) (* applicazione *)
+    f - 3 (* sottrazione *)
+    f (-3) (* applicazione *)
+    + f 3 (* equivale a +(f 3) *)
+    - f 3 (* equivale a -(f 3) *)
+    \end{lstlisting}
+
+\end{itemize}

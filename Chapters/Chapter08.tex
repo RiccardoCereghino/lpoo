@@ -193,9 +193,40 @@ parseAtom(){
 \end{lstlisting}
 \begin{lstlisting}[language=Java, caption={Grammatica EBNF equivalente}]
   Exp ::= Mul | ('+' Exp)?
-  Mul ::= Atom ('*' Mul)*
+  Mul ::= Atom ('*' Mul)?
   Atom ::= Num | '(' Exp ')'
   Num ::= '0' | '1'
 \end{lstlisting}
 
+\begin{lstlisting}[language=Java, caption={Pseudocodice derivato dalla grammatica EBNF precedente}]
+parse(){
+  nextToken()
+  parseExp()
+  checkTokenType(EOS)
+}
+parseExp(){
+  parseMul()
+  if(tokenType()==ADD){
+    nextToken()
+    parseExp()
+  }
+}
+parseMul(){
+  parseAtom()
+  if(tokenType()==MUL){
+    nextToken()
+    parseMul()
+  }
+}
+parseAtom(){
+  if(tokenType()==OPEN_PAR){
+    nextToken()
+    parseExp()
+    checkTokenType(CLOSE_PAR)
+  }
+  else
+    checkTokenType(NUM)
+  nextToken()
+}
+\end{lstlisting}
 

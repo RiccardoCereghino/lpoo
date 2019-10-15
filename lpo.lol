@@ -57,3 +57,21 @@
 \contentsline {lstlisting}{\numberline {8.7}Grammatica non ambigua}{30}{lstlisting.8.7}% 
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {8.8}Grammatica EBNF equivalente}{30}{lstlisting.8.8}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {8.9}Pseudocodice derivato dalla grammatica EBNF precedente}{31}{lstlisting.8.9}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {9.1}Sintassi}{34}{lstlisting.9.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {9.2}Esempio di funzioni anonime}{34}{lstlisting.9.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {9.3}Esempio di applicazione di funzioni}{34}{lstlisting.9.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {9.4}Esempio di applicazioni}{35}{lstlisting.9.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {9.5}Esempio di associativit\IeC {\`a}}{35}{lstlisting.9.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {9.6}Esempio di precedenza}{35}{lstlisting.9.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {9.7}Esempio di precedenza}{35}{lstlisting.9.7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {9.8}Casi limite di precedenza}{35}{lstlisting.9.8}% 
