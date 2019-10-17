@@ -75,3 +75,9 @@
 \contentsline {lstlisting}{\numberline {9.7}Esempio di precedenza}{35}{lstlisting.9.7}% 
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {9.8}Casi limite di precedenza}{35}{lstlisting.9.8}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {9.9}I tipi possono essere inferiti dall'interprete}{36}{lstlisting.9.9}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {9.10}Grammatica BNF}{36}{lstlisting.9.10}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {9.11}Associativit\IeC {\`a} a destra dell'operatore freccia}{36}{lstlisting.9.11}% 

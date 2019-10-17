@@ -134,5 +134,69 @@ Inoltre prendendo in esempio:
     + f 3 (* equivale a +(f 3) *)
     - f 3 (* equivale a -(f 3) *)
     \end{lstlisting}
-
 \end{itemize}
+
+\subsubsection{Una sessione REPL (Read Eval Print Loop)}
+\begin{lstlisting}[language=Caml, caption={I tipi possono essere inferiti dall'interprete}]
+# 42;;
+- : int = 42
+# fun x->x*2;;
+- : int -> int = <fun>
+# (fun x->x+1) 2;;
+- : int = 3
+\end{lstlisting}
+
+\paragraph{Sintassi}
+\begin{lstlisting}[language=Caml, caption={Grammatica BNF}]
+Type ::= 'int' | Type '->' Type
+\end{lstlisting}
+
+\subsubsection{Terminologia}
+\begin{itemize}
+  \item \textbf{int} è il tipo primitivo degli interi;
+  \item \textbf{int} -> \textbf{int} è un tipo composito;
+  \item \textbf{->} è un tipo \textit{costruttore}, usato per costruire tipi
+    compositi da tipi più semplici;
+  \item i tipi costruiti con il costruttore freccia (->) sono chiamati \emph{
+    arrow types} o \emph{tipi di funzione}.
+\end{itemize}
+
+\paragraph{Significato del tipo freccia}
+$t_1 -> t_2$ identifica il tipo di funzioni da $t_1$ a $t_2$ che:
+\begin{itemize}
+  \item piò essere applicazo ad un singolo argomento di tipo $t_1$;
+  \item ritorna sempre un valore di tipo $t_2$.
+\end{itemize}
+
+\subparagraph{Osservazioni:}
+\begin{itemize}
+  \item il costruttore di tipo freccia è associativo a destra.
+    \begin{lstlisting}[language=Caml, caption={Associatività a destra dell'operatore freccia}]
+    int->int->int = int->(int->int)
+    \end{lstlisting}
+  \item un tipo costruttore costruisce sempre un tipo diverso rispetto a quello
+    dei propri componenti:
+    \[
+      t_1 \text{->} t_2 \neq t_1 \qquad t_1 \text{->} t_2 \neq t_2
+    \]
+  \item due tipi freccia sono uguali se sono costruiti dallo stesso tipo di
+    componenti:
+    \[
+      t_1 \text{->} t_2 = t_3 \text{->} t_4 \text{ se e solo se } t_1 = t_3 \cap t_2 = t_4
+    \]
+  \item dai punti prima deduciamo:
+    \begin{lstlisting}[language=Caml, escapeinside={(*}{*)}]
+    int->int->int (*$\neq$*) int->(int->int)
+    \end{lstlisting}
+\end{itemize}
+
+\subsection{Funzioni di alto ordine}
+\[
+  \textbf{fun } pat_1 pat_2 \dots pat_n \text{->} exp
+\]
+è un abbreviazione di:
+\[
+  \textbf{fun } pat_1 \text{->}\textbf{fun }pat_2 \text{->}\dots \textbf{fun }pat_n \text{->} exp
+\]
+\subsection{Tuple}
+

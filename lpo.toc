@@ -1,0 +1,248 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {italian}{}
+\babel@toc {italian}{}
+\defcounter {refsection}{0}\relax 
+\vspace {-\cftbeforepartskip }
+\babel@toc {italian}{}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1}{Introduzione agli elementi di un linguaggio di programmazione}}{1}{chapter.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.1}{Linguaggi staticamente tipati}}{1}{section.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.2}{Linguaggi dinamicamente tipati}}{1}{section.1.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2.1}{Esempi di errori}}{1}{subsection.1.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {part}{\numberline {i}{Sintassi}}{3}{part.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2}{Stringhe}}{5}{chapter.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}{Esempio di stringhe}}{5}{section.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.1}{Stringa vuota}}{5}{subsection.2.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.2}{Stringa non vuota}}{5}{subsection.2.1.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.3}{Concatenazione di stringhe}}{6}{subsection.2.1.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.3.1}{Monoide}}{6}{subsubsection.2.1.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.3.2}{Induzione}}{6}{subsubsection.2.1.3.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.4}{Insiemi di stringhe}}{6}{subsection.2.1.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.2}{Linguaggio formale}}{6}{section.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Esempio:}}{6}{paragraph*.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.1}{Composizione di operatori tra linguaggi}}{6}{subsection.2.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.2}{Intuizione}}{7}{subsection.2.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.2.1}{Unione}}{7}{subsubsection.2.2.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Esempio:}}{7}{paragraph*.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.2.2}{Concatenazione}}{7}{subsubsection.2.2.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Esempio:}}{7}{paragraph*.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.3}{Monoide}}{7}{subsection.2.2.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.4}{Passo induttivo}}{7}{subsection.2.2.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.5}{Operatori + e *}}{7}{subsection.2.2.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.5.1}{Intuizione}}{7}{subsubsection.2.2.5.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3}{Espressioni regolari}}{9}{chapter.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Base:}}{9}{paragraph*.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Passo induttivo:}}{9}{paragraph*.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Esercizio}}{9}{paragraph*.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}{Semantica}}{9}{section.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.2}{Sintassi concreta delle espressioni regolari}}{10}{section.3.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.1}{Precedenza ed associativit\IeC {\`a}}}{10}{subsection.3.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.2}{Operatori derivati}}{10}{subsection.3.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.3}{Caratteri speciali in JAVA}}{10}{subsection.3.2.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.2.3.1}{Caratteri speciali cui dare un significato ordinario}}{10}{subsubsection.3.2.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Semantiche:}}{10}{paragraph*.7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.2.3.2}{Caratteri cui dare un significato speciale}}{11}{subsubsection.3.2.3.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.3}{Analisi lessicale}}{11}{section.3.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Esempio in C:}}{11}{paragraph*.8}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.1}{Token}}{11}{subsection.3.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Esempio in C:}}{12}{paragraph*.9}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.4}{Linguaggi regolari}}{12}{section.3.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4.1}{Limitazioni}}{12}{subsection.3.4.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4.2}{Esempi di linguaggi non regolari}}{12}{subsection.3.4.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4}{Analisi sintattica}}{13}{chapter.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.1}{Parser}}{13}{section.4.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1.1}{Parsers per i linguaggi di programmazione}}{13}{subsection.4.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Primo esempio con sintassi C/Java/C++}}{13}{paragraph*.10}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Secondo esempio con sintassi C/Java/C++}}{14}{paragraph*.11}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}{Context free (CF) grammars}}{15}{chapter.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Un primo esempio:}}{15}{paragraph*.13}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Da notare che:}}{15}{paragraph*.14}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Notazione:}}{15}{paragraph*.15}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.1}{Terminologia delle grammatiche CF}}{15}{section.5.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.1.1}{Terminologia per la grammatica G}}{15}{subsection.5.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Da notare che:}}{16}{paragraph*.16}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.2}{Grammatiche come definizione induttiva di linguaggi}}{16}{section.5.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2.1}{Primo esempio}}{16}{subsection.5.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.2.1.1}{Definizione induttiva di linguaggi}}{16}{subsubsection.5.2.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Da notare che:}}{16}{paragraph*.17}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2.2}{Secondo esempio}}{16}{subsection.5.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Da notare che:}}{16}{paragraph*.18}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.3}{Derivazioni}}{16}{section.5.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.3.1}{Linguaggi generati da una grammatica}}{17}{subsection.5.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Da notare che:}}{17}{paragraph*.19}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.3.2}{Derivazione ad un passo}}{17}{subsection.5.3.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Da notare che:}}{17}{paragraph*.20}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.3.3}{Definizioni di derivazione}}{17}{subsection.5.3.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.3.3.1}{Derivazione ad un passo}}{17}{subsubsection.5.3.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.3.3.2}{Derivazione a pi\IeC {\`u} passi}}{17}{subsubsection.5.3.3.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.3.3.3}{Linguaggio generato}}{18}{subsubsection.5.3.3.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}{Alberi di derivazione}}{19}{chapter.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.1}{Albero di derivazione (parse tree)}}{19}{section.6.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Osservazione 1}}{19}{paragraph*.21}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Osservazione 2}}{19}{paragraph*.22}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Intuizione}}{19}{paragraph*.23}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1.1}{Esempi di alberi di derivazione (ANTLR)}}{19}{subsection.6.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {6.1.1.1}{Albero di derivazione per "1*1+1"}}{19}{subsubsection.6.1.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Esercizio:}}{20}{paragraph*.25}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Esercizio:}}{20}{paragraph*.26}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1.2}{Definizione di albero di derivazione in G=(T,N,P)}}{20}{subsection.6.1.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {6.1.2.1}{Definizione equivalente di un linguaggio generato}}{20}{subsubsection.6.1.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {7}{Grammatiche ambigue}}{21}{chapter.7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7.1}{Soluzioni per l'ambiguit\IeC {\`a}}}{21}{section.7.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {7.1.1}{Notazione prefissa}}{21}{subsection.7.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {7.1.2}{Notazione postfissa}}{21}{subsection.7.1.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {7.1.3}{Notazione funzionale}}{21}{subsection.7.1.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {7.1.4}{Notazione infissa}}{21}{subsection.7.1.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {7.1.5}{Operatori con la stessa precedenza}}{22}{subsection.7.1.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Nota che:}}{22}{paragraph*.27}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {7.1.6}{Tecniche per risolvere l'ambiguit\IeC {\`a}}}{22}{subsection.7.1.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {7.1.6.1}{Esempio 1: + e * con la stessa precedenza}}{22}{subsubsection.7.1.6.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {7.1.6.2}{Esempio 2: * con la maggiore precedenza}}{24}{subsubsection.7.1.6.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {7.1.6.3}{Esempi rimanenti}}{24}{subsubsection.7.1.6.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7.2}{Sintassi ambigua per statements}}{25}{section.7.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {8}{Costruzione di un parser da una grammatica}}{27}{chapter.8}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Problemi:}}{27}{paragraph*.31}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8.1}{Come costruire un parser da una grammatica}}{27}{section.8.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Controesempio:}}{27}{paragraph*.32}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{{Osservazioni:}}{28}{subparagraph*.33}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Considerazioni sulla trasformazione della grammatica}}{28}{paragraph*.34}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8.2}{Grammatiche EBNF}}{29}{section.8.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {8.2.1}{Da una grammatica ad un parser top-down}}{29}{subsection.8.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Assunzioni sul tokenizer}}{29}{paragraph*.36}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{{Linee guida}}{30}{subparagraph*.37}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {8.2.1.1}{Grammatica EBNF per operatori con associativit\IeC {\`a} a destra}}{30}{subsubsection.8.2.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {9}{Paradigmi di programmazione}}{33}{chapter.9}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Esempi principali di paradigmi}}{33}{paragraph*.38}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9.1}{Paradigma completamente funzionale}}{33}{section.9.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Le funzioni sono valori di prima classe:}}{34}{paragraph*.39}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9.2}{OCaml}}{34}{section.9.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Commenti:}}{34}{paragraph*.40}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.2.1}{Funzioni ed applicazioni}}{34}{subsection.9.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.2.2}{Regole di precedenza ed associativit\IeC {\`a}}}{35}{subsection.9.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {9.2.2.1}{Una sessione REPL (Read Eval Print Loop)}}{36}{subsubsection.9.2.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Sintassi}}{36}{paragraph*.41}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {9.2.2.2}{Terminologia}}{36}{subsubsection.9.2.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{{Significato del tipo freccia}}{36}{paragraph*.42}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subparagraph}{{Osservazioni:}}{36}{subparagraph*.43}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.2.3}{Funzioni di alto ordine}}{37}{subsection.9.2.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {9.2.4}{Tuple}}{37}{subsection.9.2.4}% 
