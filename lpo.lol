@@ -60,24 +60,30 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {8.9}Pseudocodice derivato dalla grammatica EBNF precedente}{31}{lstlisting.8.9}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {9.1}Sintassi}{34}{lstlisting.9.1}% 
+\contentsline {lstlisting}{\numberline {10.1}Sintassi}{37}{lstlisting.10.1}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {9.2}Esempio di funzioni anonime}{34}{lstlisting.9.2}% 
+\contentsline {lstlisting}{\numberline {10.2}Esempio di funzioni anonime}{37}{lstlisting.10.2}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {9.3}Esempio di applicazione di funzioni}{34}{lstlisting.9.3}% 
+\contentsline {lstlisting}{\numberline {10.3}Esempio di applicazione di funzioni}{37}{lstlisting.10.3}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {9.4}Esempio di applicazioni}{35}{lstlisting.9.4}% 
+\contentsline {lstlisting}{\numberline {10.4}Esempio di applicazioni}{38}{lstlisting.10.4}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {9.5}Esempio di associativit\IeC {\`a}}{35}{lstlisting.9.5}% 
+\contentsline {lstlisting}{\numberline {10.5}Esempio di associativit\IeC {\`a}}{38}{lstlisting.10.5}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {9.6}Esempio di precedenza}{35}{lstlisting.9.6}% 
+\contentsline {lstlisting}{\numberline {10.6}Esempio di precedenza}{38}{lstlisting.10.6}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {9.7}Esempio di precedenza}{35}{lstlisting.9.7}% 
+\contentsline {lstlisting}{\numberline {10.7}Esempio di precedenza}{38}{lstlisting.10.7}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {9.8}Casi limite di precedenza}{35}{lstlisting.9.8}% 
+\contentsline {lstlisting}{\numberline {10.8}Casi limite di precedenza}{38}{lstlisting.10.8}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {9.9}I tipi possono essere inferiti dall'interprete}{36}{lstlisting.9.9}% 
+\contentsline {lstlisting}{\numberline {10.9}I tipi possono essere inferiti dall'interprete}{39}{lstlisting.10.9}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {9.10}Grammatica BNF}{36}{lstlisting.9.10}% 
+\contentsline {lstlisting}{\numberline {10.10}Grammatica BNF}{39}{lstlisting.10.10}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {9.11}Associativit\IeC {\`a} a destra dell'operatore freccia}{36}{lstlisting.9.11}% 
+\contentsline {lstlisting}{\numberline {10.11}Associativit\IeC {\`a} a destra dell'operatore freccia}{39}{lstlisting.10.11}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.12}Nuove produzioni per Exp e Pat}{40}{lstlisting.10.12}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.13}Nuova produzione per Type}{40}{lstlisting.10.13}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.14}Esempi di tuple}{40}{lstlisting.10.14}% 

@@ -1,0 +1,188 @@
+\chapter{OCaml}
+OCaml deriva da \textbf{ML}, è un linguaggio multi-paradigma con un approccio
+puramente funzionale, è staticamente tipato con inferenza di tipo:
+\begin{itemize}
+  \item gli errori di tipo sono rilevati staticamente;
+  \item i tipi possono essere omessi nei programmi.
+\end{itemize}
+
+\begin{lstlisting}[language=Caml, caption={Sintassi}]
+Exp ::= ID | NUM | Exp Exp | 'fun' Pat+ '->' Exp | UOP Exp | Exp BOP Exp | '(' Exp ')'
+Pat ::= ID // pattern semplificato
+\end{lstlisting}
+
+\paragraph{Commenti:}
+\begin{itemize}
+  \item \textbf{ID} rappresenta gli identificatori di variabile $[a-zA-Z\_]
+    [\backslash w']*$;
+  \item \textbf{NUM} rappresenta i numeri naturali:
+    \[
+      0[bB][01][01\_]*|0[oO][0-7][0-7\_]*|0[xX][0-9a-fA-F][0-9a-fA-F\_]*|\backslash d[\backslash d\_]*
+    \];
+  \item \textbf{UOP} rappresenta operatori aritmetici unari $[+-]$;
+  \item \textbf{BOP} rappresenta operatori aritmetici binari $[+-*\backslash]|mod$;
+  \item \textbf{Pat} rappresenta i patterns, per semplicità si possono
+    associare agli identificatori.
+\end{itemize}
+
+\section{Funzioni ed applicazioni}
+\begin{itemize}
+  \item esempi di funzioni anonime:
+    \begin{lstlisting}[language=Caml, caption={Esempio di funzioni anonime}]
+    fun x -> x+1 (* funzione di incremento *)
+    fun x y -> x+y (* funzione di addizione *)
+    \end{lstlisting}
+  \item applicazione di funzioni:
+    \begin{lstlisting}[language=Caml, caption={Esempio di applicazione di funzioni}]
+    (fun x -> x+1) 3 (* il risultato sara 4 *)
+    \end{lstlisting}
+\end{itemize}
+
+Inoltre prendendo in esempio:
+\begin{lstlisting}[language=Caml, caption={Esempio di applicazioni}]
+  exp1 exp2
+\end{lstlisting}
+\begin{itemize}
+  \item l'evaluazione di \textbf{exp1} si aspetta come valore di ritorno una
+    funzione $f$;
+  \item l'evaluazione di \textbf{exp2} si aspetta come valore di ritorno un
+    argomento valido $a$;
+  \item l'evaluazione di \textbf{exp1 exp2} ritorna $f(a)$ ($f$ applicato ad
+    $a$).
+\end{itemize}
+
+\section{Regole di precedenza ed associatività}
+\begin{itemize}
+  \item Si usano le regole standard per le espressioni aritmetiche;
+  \item l'applicazione è associativa a sinistra:
+    \begin{lstlisting}[language=Caml, caption={Esempio di associatività}]
+    (fun x y -> x+y) 3 4 (* equivale a ((fun x y -> x+y) 3) 4 *)
+    \end{lstlisting}
+  \item l'applicazione ha precedenza maggiore rispetto gli operatori binari:
+    \begin{lstlisting}[language=Caml, caption={Esempio di precedenza}]
+    (fun x -> x*2) 1+2 (* equivale a ((fun x -> x*2) 1) +2 *)
+    1+(fun x -> x*2) 1+2 (* equivale a 1+((fun x -> x*2) 1) +2 *)
+    \end{lstlisting}
+  \item le funzioni anonime hanno piorità più bassa rispetto le applicazioni
+    e gli operatori binari:
+    \begin{lstlisting}[language=Caml, caption={Esempio di precedenza}]
+    fun x -> x*2 (* equivale a fun x -> x*2) *)
+    fun f a -> f a (* equivale a fun f a -> (f a) *)
+    \end{lstlisting}
+  \item i casi limite:
+    \begin{lstlisting}[language=Caml, caption={Casi limite di precedenza}]
+    f + 3 (* addizione *)
+    f (+3) (* applicazione *)
+    f - 3 (* sottrazione *)
+    f (-3) (* applicazione *)
+    + f 3 (* equivale a +(f 3) *)
+    - f 3 (* equivale a -(f 3) *)
+    \end{lstlisting}
+\end{itemize}
+
+\section{Una sessione REPL (Read Eval Print Loop)}
+\begin{lstlisting}[language=Caml, caption={I tipi possono essere inferiti dall'interprete}]
+# 42;;
+- : int = 42
+# fun x->x*2;;
+- : int -> int = <fun>
+# (fun x->x+1) 2;;
+- : int = 3
+\end{lstlisting}
+
+\section{Sintassi}
+\begin{lstlisting}[language=Caml, caption={Grammatica BNF}]
+Type ::= 'int' | Type '->' Type
+\end{lstlisting}
+
+\subsection{Terminologia}
+\begin{itemize}
+  \item \textbf{int} è il tipo primitivo degli interi;
+  \item \textbf{int} -> \textbf{int} è un tipo composito;
+  \item \textbf{->} è un tipo \textit{costruttore}, usato per costruire tipi
+    compositi da tipi più semplici;
+  \item i tipi costruiti con il costruttore freccia (->) sono chiamati \emph{
+    arrow types} o \emph{tipi di funzione}.
+\end{itemize}
+
+\paragraph{Significato del tipo freccia}
+$t_1 -> t_2$ identifica il tipo di funzioni da $t_1$ a $t_2$ che:
+\begin{itemize}
+  \item piò essere applicazo ad un singolo argomento di tipo $t_1$;
+  \item ritorna sempre un valore di tipo $t_2$.
+\end{itemize}
+
+\subparagraph{Osservazioni:}
+\begin{itemize}
+  \item il costruttore di tipo freccia è associativo a destra.
+    \begin{lstlisting}[language=Caml, caption={Associatività a destra dell'operatore freccia}]
+    int->int->int = int->(int->int)
+    \end{lstlisting}
+  \item un tipo costruttore costruisce sempre un tipo diverso rispetto a quello
+    dei propri componenti:
+    \[
+      t_1 \text{->} t_2 \neq t_1 \qquad t_1 \text{->} t_2 \neq t_2
+    \]
+  \item due tipi freccia sono uguali se sono costruiti dallo stesso tipo di
+    componenti:
+    \[
+      t_1 \text{->} t_2 = t_3 \text{->} t_4 \text{ se e solo se } t_1 = t_3 \cap t_2 = t_4
+    \]
+  \item dai punti prima deduciamo:
+    \begin{lstlisting}[language=Caml, escapeinside={(*}{*)}]
+    int->int->int (*$\neq$*) int->(int->int)
+    \end{lstlisting}
+\end{itemize}
+
+\subsection{Funzioni di alto ordine}
+\[
+  \textbf{fun } pat_1 pat_2 \dots pat_n \text{->} exp
+\]
+è un abbreviazione di:
+\[
+  \textbf{fun } pat_1 \text{->}\textbf{fun }pat_2 \text{->}\dots \textbf{fun }pat_n \text{->} exp
+\]
+\section{Tuple}
+\begin{lstlisting}[language=Caml, escapeinside={(*}{*)}, caption={Nuove
+produzioni per Exp e Pat}]
+Exp ::= '(' ')' | Exp ',' Exp
+Pat ::= '(' ')' | '(' Pat (',' Pat)* ')'
+\end{lstlisting}
+
+\begin{lstlisting}[language=Caml, escapeinside={(*}{*)}, caption={Nuova
+produzione per Type}]
+Type ::= 'unit' | Type '*' Type
+\end{lstlisting}
+
+\subsection{Precedenza ed associatività}
+\begin{itemize}
+  \item l'operatore \emph{tuple} ha precedenza più bassa rispetto gli altri
+    operatori;
+  \item l'operatore \emph{tuple} non è associativo nè a destra nè a sinistra;
+  \item il costruttore $*$ ha precedenza maggiore del costruttore $->$;
+  \item il costruttore $*$ non è associativo nè a destra nè a sinistra.
+\end{itemize}
+
+\begin{lstlisting}[language=Caml, escapeinside={(*}{*)}, caption={Esempi
+di tuple}]
+# ()
+- : unit = ()
+
+# 1,2,3
+- : int * int * int = (1,2,3)
+
+# (1,2),3
+- : (int * int) * int = ((1,2),3)
+
+# 1,(2,3)
+- : int * (int * int) = (1,(2,3))
+
+# fun() -> 3
+- : unit -> int = <fun>
+
+# fun ((x,y),z)->x*y*z
+- : (int * int) * int -> int = <fun>
+
+#fun (x. (y,z))->x*y*z
+- : int * (int * int) -> int 0 <fun>
+\end{lstlisting}
