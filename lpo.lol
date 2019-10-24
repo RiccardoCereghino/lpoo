@@ -87,3 +87,27 @@
 \contentsline {lstlisting}{\numberline {10.13}Nuova produzione per Type}{40}{lstlisting.10.13}% 
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {10.14}Esempi di tuple}{40}{lstlisting.10.14}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.15}Esempi di funzioni curry}{41}{lstlisting.10.15}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.16}Esempi di applicazione parziale di funzioni curry}{41}{lstlisting.10.16}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.17}Sintassi}{42}{lstlisting.10.17}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.18}Espressioni condizionali}{42}{lstlisting.10.18}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.19} Grammatica delle variabili globali }{43}{lstlisting.10.19}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.20} Addizione di quadrati }{43}{lstlisting.10.20}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.21} Addizione di cubi }{43}{lstlisting.10.21}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.22} Soluzione con funzione curry }{43}{lstlisting.10.22}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.23} Sintassi delle variabili locali }{43}{lstlisting.10.23}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.24} Esempio di variabili locali }{43}{lstlisting.10.24}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.25} Esempio di dicharazione statica }{44}{lstlisting.10.25}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.26} Miglioramento dell'esempio della somma di quadrati e cubi }{44}{lstlisting.10.26}% 

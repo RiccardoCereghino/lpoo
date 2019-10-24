@@ -186,3 +186,219 @@ di tuple}]
 #fun (x. (y,z))->x*y*z
 - : int * (int * int) -> int 0 <fun>
 \end{lstlisting}
+
+\section{Funzioni curry}
+\begin{theorem}
+  Una funzione curry (da \emph{Haskell Curry}), è una funzione di alto
+  ordine con un singolo argomento che ritorna una catena di funzioni con
+  un singolo argomento.
+
+  Una funzione non curry è una funzione con argomenti multipli.
+\end{theorem}
+
+Una funzione curry può essere trasformata in una funzione non curry e
+viceversa.
+
+\begin{lstlisting}[language=Caml, escapeinside={(£}{£)}, caption={Esempi
+di funzioni curry}]
+(* addizione di due interi *)
+fun x y -> x+y;; (* versione curry int->int->int *)
+fun (x y) -> x+y;; (* versione non curry int->int->int *)
+(* moltiplicazione di tre interi *)
+fun x y z -> x*y*z;; (* versione curry int->int->int->int *)
+fun (x y z) -> x*y*z;; (* versione non curry int->int->int->int *)
+\end{lstlisting}
+
+\subsection{Applicazione parziale}
+Le funzioni curry permettono l'applicazione parziale, ovvero gli argomenti
+possono essere passati uno alla volta.
+
+Le funzioni non curry non permettono un applicazione parziale, tutti gli
+argomenti devono essere passai.
+\begin{lstlisting}[language=Caml, escapeinside={(£}{£)}, caption={Esempi
+di applicazione parziale di funzioni curry}]
+let curried_add x y=x+y;;
+let uncurried_add(x,y)=x+y;;
+(* computa 1+2 con la versione non curry *)
+uncarried_add(1,2);;
+(* computa 1+2 con l'applicazione parziale *)
+let inc=curried_add 1;; (* passa l'argomento 1 e salva il risultato *)
+inc 2;; (* passa l'argomento 2 e computa il risultato finale *)
+\end{lstlisting}
+
+L'applicazione parziale permette la specializzazione di funzioni: da una
+funzione generica è possibile generarne di più specifiche senza
+duplicazione di codice, quindi il riutilizzo e la mantenibilità sono
+favoriti.
+
+\section{Valori booleani}
+Per $BOOL=false|true$.
+\begin{lstlisting}[language=Caml, escapeinside={(£}{£)}, caption={Sintassi}]
+Exp ::= BOOL | 'not' Exp | Exp '&&' Exp | Exp '||' Exp
+Type ::= 'bool'
+\end{lstlisting}
+
+\subsection{Regole sintattiche standard}
+\begin{itemize}
+  \item $\&\&$ e $||$ sono associativi a sinistra;
+  \item \textbf{not} ha precedenza maggiore di $\&\&$;
+  \item $\&\&$ ha precedenza maggiore di $||$.
+\end{itemize}
+
+\subsection{Semantica statica}
+\begin{itemize}
+  \item \textbf{false} e \textbf{true} sono di tipo \emph{bool};
+  \item \textbf{not} $e$ è di tipo \emph{bool} se e solo se $e$ è di tipo
+    \emph{bool};
+  \item il tipo di \textbf{not} $e$ non è corretto se $e$ non è di tipo
+    \emph{bool} oppure se il tipo di $e$ non è corretto;
+  \item $e_1\&\&e_2$ e $e_1||e_2$ sono di tipo \emph{bool} se e solo se $e_1$
+    ed $e_2$ sono di tipo \emph{bool};
+  \item il tipo di \textbf{not} $e_1\&\&e_2$ e $e_1||e_2$ non è corretto se
+    $e_1$ o $e_2$ non sono di tipo \emph{bool} oppure se il tipo di $e_1$ o
+    $e_2$ non è corretto.
+\end{itemize}
+
+
+Inoltre:
+\begin{itemize}
+  \item gli operatori $\&\&$ e $||$ sono risolti sinistra a destra;
+  \item se $e_1$ ritorna \emph{false} allora $e_1\&\&e_2$ ritorna
+    \emph{false}, altrimenti ritorna il valore di $e_2$;
+  \item se $e_1$ ritorna \emph{true} allora $e_1||e_2$ ritorna \emph{true},
+    altrimenti ritorna il valore di $e_2$.
+\end{itemize}
+
+\subsection{Espressioni condizionali}
+le operazioni condizionali hanno precedenza minore di tutte le altre
+operazioni.
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Espressioni condizionali
+  }]
+Exp ::= 'if' Exp 'then Exp 'else' Exp
+\end{lstlisting}
+
+\section{Variabili globali}
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Grammatica delle variabili globali
+  }
+]
+Dec ::= 'let' Def (' and' Def)*
+    | 'let' 'rec' FunDef (' and' FunDef)*
+Def ::= Pat '=' Exp | FunDef
+FunDef ::= ID Pat* '=' Exp
+\end{lstlisting}
+
+\paragraph{Esempio di variabili globali e funzioni curry}
+Consideriamo i seguenti due esempi.
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Addizione di quadrati
+  }
+]
+let rec sumsquare n = (* sumsquare si usa anche con associativo a destra*)
+  if n<=0 then 0 else n*n+sumsquare(n-1);;
+\end{lstlisting}
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Addizione di cubi
+  }
+]
+let rec sumcube n = (* sumcube si usa anche con associativo a destra*)
+  if n<=0 then 0 else n*n+sumcube(n-1);;
+\end{lstlisting}
+
+
+Si nota che sono quasi identici, quindi si può usare una funzione curry.
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Soluzione con funzione curry
+  }
+]
+let rec gen_sum f n = (* (int -> int) -> int -> int *)
+if n<=0 then 0 else f n+gen_su, f (n-1);;
+
+let der_sumsquare = gen_sum (fun x->x*x);; (* int -> int *)
+let der_sumcube = gen_sum (fun x->x*x*x);; (* int -> int *)
+\end{lstlisting}
+
+Notiamo che $gen\_sum$ può essere specializzato dato che è funzione curry
+ed il primo argomento è $f$ piuttosto che $n$.
+
+\section{Dichiarazione di variabili locali}
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Sintassi delle variabili locali
+  }
+]
+Dec ::= 'let' Def (' and' Def)* 'in' Exp
+    | 'let' 'rec' FunDef (' and' FunDef)* 'in' Exp
+Def ::= Pat '=' Exp | FunDef
+FunDef ::= ID Pat* '=' Exp
+\end{lstlisting}
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di variabili locali
+  }
+]
+let f x=x+1 and v=41 in f v;; (* f e v possono essere usati solo qui *)
+- : int = 42
+let x=1 in let x=x*2 in x*x (* dichiarazioni annidate *)
+- : int = 4
+\end{lstlisting}
+
+Da notare che le dichiarazioni annidate sovrascrivono le dichiarazioni con
+lo stessi $ID$.
+
+\subsection{Scopo delle dichiarazioni statiche}
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di dicharazione statica
+  }
+]
+let v=40;;
+
+let f x = x*v;; (* v riferisce alla dichiarazione precedente *)
+
+f 3;; (* ritorna 120 *)
+
+let v=4;; (* dichiarazione di v sovrascritta *)
+
+f 3;; (* ritorna 120 *)
+\end{lstlisting}
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Miglioramento dell'esempio della somma di quadrati e cubi
+  }
+]
+let gen_sum f = (* (int ->) -> int -> int *)
+    let rec aux n = if n<=0 then 0 else f n+aux (n-1) (* int -> int )
+    in aux;;
+\end{lstlisting}
+
+Non dobbiamo passare l'argomento $f$ alla funzione ricorsiva $aux$.
