@@ -111,3 +111,21 @@
 \contentsline {lstlisting}{\numberline {10.25} Esempio di dicharazione statica }{44}{lstlisting.10.25}% 
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {10.26} Miglioramento dell'esempio della somma di quadrati e cubi }{44}{lstlisting.10.26}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.27} Sintassi delle liste }{45}{lstlisting.10.27}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.28} Nuove produzioni per Pat }{46}{lstlisting.10.28}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.29} Primo esempio di pattern matching }{46}{lstlisting.10.29}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.30} Secondo esempio di pattern matching }{46}{lstlisting.10.30}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.31} Terzo esempio di pattern matching }{46}{lstlisting.10.31}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.32} Espressione per eseguire un match con multipli patterns }{47}{lstlisting.10.32}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.33} Esempio di match multipli }{47}{lstlisting.10.33}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.34} Sintassi di matching di patterns multipli }{47}{lstlisting.10.34}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.35} Esempi di pattern matching funzionanti }{48}{lstlisting.10.35}% 

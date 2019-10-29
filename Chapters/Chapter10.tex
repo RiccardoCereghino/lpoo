@@ -402,3 +402,44 @@ let gen_sum f = (* (int ->) -> int -> int *)
 \end{lstlisting}
 
 Non dobbiamo passare l'argomento $f$ alla funzione ricorsiva $aux$.
+
+\clearpage
+\section{Liste}
+\begin{lstlisting}[
+    language=Caml,
+    escapeinside={(£}{£)},
+    caption={
+      Sintassi delle liste
+    }
+  ]
+  Exp ::= '[' ']' | Exp '::'Exp
+\end{lstlisting}
+
+\begin{itemize}
+  \item la lista vuota è rappresentata da $[]$;
+  \item $hd::ts$ è la lista con la testa ($hd$) e la coda ($tl$);
+  \item $[]\neq t_1::t_2$ e $t_1\neq t_1::t_2$ e $t_2\neq t_1::t_2$;
+  \item $t_1::t_2=t_1^\prime::t_2^\prime$ se e solo se $t_1=t_1^\prime$ e $t_2
+    =t_2^\prime$;
+  \item $[e_1;e_2;\dots;e_n]$ è l'abbreviazione per $e_1::e_2::\dots::e_n$.
+\end{itemize}
+
+\paragraph{Regole sintattiche}
+\begin{itemize}
+  \item Associatività a destra;
+  \item minore precedenza degli operatori unari e binari con notazione
+    infissa;
+  \item maggiore precedenza del costruttore di tupla;
+
+    ...
+
+    ...
+    .
+\end{itemize}
+
+\subsection{Tipi di costruttori per le liste}
+Le liste devono essere omogenee, tutti gli elementi devono essere dello stesso
+tipo:
+\begin{itemize}
+  \item 
+\end{itemize}

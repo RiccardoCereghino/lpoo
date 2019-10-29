@@ -1,0 +1,186 @@
+\section{Pattern matching}
+Le funzioni che non possono essere definite con un singolo pattern sono:
+\begin{itemize}
+  \item la lunghezza di una lista;
+  \item la somma di tutti gli elementi di una lista;
+  \item la lista con i primi due elementi scambiati.
+\end{itemize}
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Nuove produzioni per Pat
+  }
+]
+Pat ::= '[' ']' | Pat '::' Pat | '[' Pat (';' Pat)* ']'
+\end{lstlisting}
+
+\paragraph{Osservazione}
+Tutte le variabili in un pattern devono essere distinte (questo
+rende il controllo sui pattern più efficiente).
+Inoltre i \emph{patterns} sono costruiti con costruttori, non con
+altri operatori:
+$x::y$ è un pattern valido, $x@y$ o $x+y$ non lo sono; i costruttori
+garantiscono un unica decomposizione dei valori.
+
+\subsection{Esempi di pattern matching}
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Primo esempio di pattern matching
+  }
+]
+let add (x,y) = x+y;;
+add (r,5);;
+\end{lstlisting}
+\begin{itemize}
+  \item $(3,5)$ combacia con il pattern $(x,y)$ se e solo se $x=3\cap
+    y=5$;
+  \item se sostituiamo $x,y$ in $(x,y)$ con $3$ e $5$,
+    rispettivamente, allora otteniamo il valore $(3,5)$.
+\end{itemize}
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Secondo esempio di pattern matching
+  }
+]
+let hd (h::t) = h;; (* ritorna la testa della lista *)
+hd [3;5];;
+\end{lstlisting}
+\begin{itemize}
+  \item $[3;5]$ combacia con il pattern $(h::t)$ con $3$ e $[5]$
+    rispettivamente, quindi otteniamo il valore $(3::[5])=[3;5]$.
+\end{itemize}
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Terzo esempio di pattern matching
+  }
+]
+let hd (h::t) = h;;
+
+hd[];;
+\end{lstlisting}
+\begin{itemize}
+  \item $[]$ non combacia con $(h::t)$ per qualunque valore associato a $h$ e
+    $t$;
+  \item quindi $[]\neq(h::t)$ per tutti i possibili valori associati con $h$ e
+    $t$;
+  \item il comportamento è corretto, dato che la testa di una lista non è
+    definita per la lista vuota.
+\end{itemize}
+
+\subsection{Matching di patterns multipli}
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Espressione per eseguire un match con multipli patterns
+  }
+]
+Exp ::= 'match' Exo 'with' Pat '->' Exp ('|' Pat '->' Exp)*
+\end{lstlisting}
+
+\subsubsection{Esempi}
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di match multipli
+  }
+]
+let rec length 1 = match 1 with
+    [] -> 0
+  | hd::tl -> 1+length t1;;
+
+let rec sum 1 = match 1 with
+    [] -> 0
+  | hd::tl -> hd+sum tl;;
+
+let swap 1 = match 1 with
+    [] -> []
+  | [x] -> [x]
+  | x::y::1 -> y::x::1;;
+\end{lstlisting}
+
+\subsubsection{Sintassi}
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Sintassi di matching di patterns multipli
+  }
+]
+match e with (£$p_1$£) -> (£$e_1$£) | (£$\dots$£) (£$p_n$£) -> (£$e_n$£)
+\end{lstlisting}
+
+\paragraph{Semantica statica}
+L'espressione $e$ e tutti i patterns $p_1\dots p_n$ devono essere dello stesso
+tipo, così come tutte le espressioni $e_1\dots e_n$.
+
+
+Viene riportato un warning se i patterns non sono esaustivi, per esempio
+se sono mancanti, oppure se un pattern non è utilizzato.
+
+\paragraph{Semantica dinamica}
+In ordine vengono calcolati:
+\begin{enumerate}
+  \item $e$;
+  \item tutti i pattern $p_1\dots p_n$ testati da sinistra a destra, dalla cima
+    in fondo;
+  \item al primo \emph{match} con $p_i$, l'espressione $e_i$ è calcolata,
+    con le variabili definite dal match con $p_i$;
+  \item se non viene trovato un match, allora l'errore \emph{Match\_failure}
+    è sollevato.
+\end{enumerate}
+
+\subsection{Decomposizione unica}
+I costruttori assicurano che se esiste un march per $p$, allora esiste un unica sostituzione per le variabili in $p$.
+
+\subsection{Costruttori per i tipi primitivi}
+Tutti i litterali (tokens che rappresentano valori) sono costruttori costanti.
+
+\subsection{Notazione abbreviata}
+\begin{itemize}
+  \item la carattere \textit{wildcard} $\_$ è il pattern che matcha tutti i
+    valori quando nessuna variabile è necessaria;
+  \item $\textbf{function } p_1->e_1|\dots|p_n->e_n$ abbrevia la notazione:
+    \begin{lstlisting}[
+      language=Caml,
+      escapeinside={(£}{£)},
+    ]
+    fun var -> match var with (£$p_1$£) -> (£$e_1$£) | (£$\dots$£) | (£$p_n$£)(£$e_n$£)
+    \end{lstlisting}
+  \item $p \textbf{ as } id$: un pattern (o sotto-pattern) $p$ può essere
+    associato con un $id$ per fare riferimento al valore trovato direttamente.
+\end{itemize}
+
+\subsection{Esempi di pattern matching funzionanti}
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Esempi di pattern matching funzionanti
+  }
+]
+let mynot = function false -> true | _ -> false;;
+
+let iszero = function 0 -> true | _ -> false;;
+
+let rec length = function _::tl -> \+length tl | _ -> 0;;
+
+let rec sum = function hd::tl -> hd+sum tl | _ -> 0;;
+
+let swap = function x::y::1 -> y::x::1 | other -> other;;
+
+let ord_swap = function
+    x::Y::tl as 1 -> if x>y then y::x::tl else 1
+  |other -> other;;
+\end{lstlisting}
