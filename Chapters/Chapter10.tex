@@ -710,3 +710,134 @@ let ord_swap = function
     x::Y::tl as 1 -> if x>y then y::x::tl else 1
   |other -> other;;
 \end{lstlisting}
+
+\section{Ricorsione ed efficienza}
+
+\section{Accumulatori}
+
+\section{Ricorsione in coda}
+
+\subsection{Ricorsione in coda con accumulatori}
+
+\section{Funzioni polimorfiche}
+
+\section{Stringhe}
+
+\section{Liste}
+
+\section{Eccezioni}
+La gestione di problemi e comportamenti non voluti deve essere eseguita il
+prima possibile, al momento giusto e, un crash del software deve essere
+evitato se possibile.
+
+\subsection{Benefici}
+Una chiara separazione del comportamento normale e non:
+\begin{itemize}
+  \item \textbf{esecuzione normale ed anormale:} l'esecuzione normale del
+    programma deve essere interrotta non appena un errore viene rilevato;
+  \item \textbf{valori ed eccezioni:}
+\end{itemize}
+
+
+Costrutti di alto livello per gestire le eccezioni:
+\begin{itemize}
+  \item generazione e propagazione delle eccezioni;
+  \item gestione delle eccezioni.
+\end{itemize}
+
+Maggiore leggibilità del software:
+\begin{itemize}
+  \item è più facile rilevare i bug;
+  \item miglior supporto per la tolleranza dei guasto.
+\end{itemize}
+
+\subsection{Crezione}
+Le eccezioni hanno tipo $exn$ e sono create con costruttori, per generarle
+e propagarle si può usare la funzione predefinita:
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Funzione predefinita per le eccezioni
+  }
+]
+raise : exn -> 'a
+\end{lstlisting}
+
+La gestione degli errori:
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Gestione degli errori
+  }
+]
+try e with (£$p_1$£) -> (£$e_1$£) | (£$\dots$£) | (£$p_n$£) -> (£$e_n$£)
+\end{lstlisting}
+
+\emph{raise} non ritorna nessun valore, il tipo \emph{'a} può quindi
+essere utilizzato in qualsiasi contesto.
+
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Dichiarazione dei costruttori di eccezioni, sintassi
+  }
+]
+Dec ::= 'exception' CONS_ID ('of' Type)?
+\end{lstlisting}
+
+\emph{CONS\_ID} deve cominciare con una lettera maiuscola.
+
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Esempi di eccezioni
+  }
+]
+exception Fault;;
+exception Fault1 of string;;
+exception 
+\end{lstlisting}
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Eccezioni predefinite e funzioni
+  }
+]
+exception Division_by_zero;;
+
+exception Failure of string;;
+
+exception Invalid_argument;;
+
+exception Match_failure of string+int+int;;
+
+int failwith msh = raise (Failure.msg);;
+\end{lstlisting}
+
+\section{Tipi varianti}
+Permettono all'utente di definire nuovi tipi con dei costruttori.
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di tipi varianti
+  }
+]
+type color = Red | Green | Blue;;
+
+let to_string = function
+    Red -> "red"
+  | Green -> "green"
+  | Blue -> "blue";;
+
+List.map to_string [Red;Blue;Green;Blue];;
+\end{lstlisting}

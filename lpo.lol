@@ -135,3 +135,15 @@
 \contentsline {lstlisting}{\numberline {10.37} Sintassi di matching di patterns multipli }{48}{lstlisting.10.37}% 
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {10.38} Esempi di pattern matching funzionanti }{49}{lstlisting.10.38}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.39} Funzione predefinita per le eccezioni }{50}{lstlisting.10.39}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.40} Gestione degli errori }{51}{lstlisting.10.40}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.41} Dichiarazione dei costruttori di eccezioni, sintassi }{51}{lstlisting.10.41}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.42} Esempi di eccezioni }{51}{lstlisting.10.42}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.43} Eccezioni predefinite e funzioni }{51}{lstlisting.10.43}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.44} Esempio di tipi varianti }{51}{lstlisting.10.44}% 
