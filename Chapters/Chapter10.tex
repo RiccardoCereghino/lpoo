@@ -901,41 +901,31 @@ Una chiara separazione del comportamento normale e non:
 \begin{itemize}
   \item \textbf{esecuzione normale ed anormale:} l'esecuzione normale del
     programma deve essere interrotta non appena un errore viene rilevato;
-  \item \textbf{valori ed eccezioni:}
+  \item \textbf{valori ed eccezioni:} i valori sono tornati solo se una
+    computazione si risolve normalmente, un eccezione viene lanciata, senza
+    ritorno di valori, se la computazione non si risolve.
 \end{itemize}
 
 
-Costrutti di alto livello per gestire le eccezioni:
-\begin{itemize}
-  \item generazione e propagazione delle eccezioni;
-  \item gestione delle eccezioni.
-\end{itemize}
-
-Maggiore leggibilità del software:
-\begin{itemize}
-  \item è più facile rilevare i bug;
-  \item miglior supporto per la tolleranza dei guasto.
-\end{itemize}
-
-\subsection{Crezione}
+\subsection{Costruttori e sintassi}
 Le eccezioni hanno tipo $exn$ e sono create con costruttori, per generarle
 e propagarle si può usare la funzione predefinita:
 \begin{lstlisting}[
   language=Caml,
   escapeinside={(£}{£)},
   caption={
-    Funzione predefinita per le eccezioni
+    Funzione predefinita la propagazione degli errori
   }
 ]
 raise : exn -> 'a
 \end{lstlisting}
 
-La gestione degli errori:
+La gestione delle eccezioni invece:
 \begin{lstlisting}[
   language=Caml,
   escapeinside={(£}{£)},
   caption={
-    Gestione degli errori
+    Gestione delle eccezioni
   }
 ]
 try e with (£$p_1$£) -> (£$e_1$£) | (£$\dots$£) | (£$p_n$£) -> (£$e_n$£)
@@ -965,9 +955,12 @@ Dec ::= 'exception' CONS_ID ('of' Type)?
     Esempi di eccezioni
   }
 ]
-exception Fault;;
-exception Fault1 of string;;
-exception 
+exception Fault;; (* costante *)
+exception Fault1 of string;; (* unario *)
+exception Fault2 of string*exn;; (* binario *)
+let exc=Fault;;
+let exc1=Fault1 "error message";;
+let exc2=Fault2 ("msg",exc);;
 \end{lstlisting}
 
 \begin{lstlisting}[
@@ -985,7 +978,7 @@ exception Invalid_argument;;
 
 exception Match_failure of string+int+int;;
 
-int failwith msh = raise (Failure.msg);;
+int failwith msg = raise (Failure.msg);;
 \end{lstlisting}
 
 \section{Tipi varianti}
@@ -1007,3 +1000,105 @@ let to_string = function
 
 List.map to_string [Red;Blue;Green;Blue];;
 \end{lstlisting}
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio con costruttori di arità maggiore di 0
+  }
+]
+type shape = Square of float | Circle of float
+    | Rectangle of float * float;;
+
+let perimeter = function
+    Square side -> 4.0 *. side
+  | Circle ray -> 2.0 *. Float,pi *. ray
+  | Rectangle (width,height) -> 2.0 *. (width *. height);;
+
+perimeter (Square 4.0);;
+- : float = 16
+\end{lstlisting}
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di costruttore con ricorsione
+  }
+]
+type exp_ast = NumLit of int | Sign of exp_ast
+    | Mul of exp_ast * exp_ast | Add of exp_asd * exp_ast;;
+
+let rec eval = function
+    NumLit n -> n
+  | Sign t -> - eval t
+  | Mul (t1,t2) -> (eval tl) * eval t2
+  | Add (t1,t2) -> (eval tl) + eval t2;;
+
+let ast = Sign(Add(NumLit 40, NumLit 2));;
+eval ast;;
+- : int = -42
+\end{lstlisting}
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di costruttore polimorfico
+  }
+]
+type 'a option = None | Some of 'a;;
+let get = function (* get : 'a option 'a *)
+    Some v -> v
+  | _ -> raise (Invalid_argument "get");;
+
+let find p = (* find : ('a -> bool) -> 'a list -> 'a option *)
+  let rec aux = function
+      hd::tl -> if p hd then Some hd else aux tl
+    | _ -> None
+  in aux;;
+
+let v=find ((<) 0) [-1;-2;-3];;
+val v : int option = Some 3
+
+get v;;
+- : int = 3
+
+let v=find ((<) 0) [-1;-2;-3];;
+val v : int option = None
+get v;;
+Exception: Invalid_argument "get".
+\end{lstlisting}
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio con polimorfismo e ricorsione di costruttore
+  }
+]
+type 'a btree = Empty | Node of 'a * 'a btree * 'a btree;;
+
+let rec member el = function
+    Node(label,left,right) ->
+        el=label || el<label && member el left || member el right
+  | _ -> false;;
+
+let rec insert el = function
+    Node(label,left,right) as t ->
+        if el=label then t
+        else if el < label then Node(label,insert el left,right)
+        else Node(label, left, insert el right)
+  | _ -> Node(el,Empty,Empty);;
+\end{lstlisting}
+\section{Numeri a virgola mobile}
+Il tipo predefinito è \textbf{float}, hanno costruttori costanti e gli
+operatori sono gli stessi dei numeri interi, ma seguiti da un punto.
+Le variabili globali sono:
+\begin{itemize}
+  \item nan;
+  \item infinity;
+  \item neg\_infinity.
+\end{itemize}
+Altre funzionalità si trovano nei moduli \emph{Stdlib} e \emph{Float}.

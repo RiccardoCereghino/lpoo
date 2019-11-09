@@ -136,14 +136,40 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {10.38} Esempi di pattern matching funzionanti }{49}{lstlisting.10.38}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {10.39} Funzione predefinita per le eccezioni }{50}{lstlisting.10.39}% 
+\contentsline {lstlisting}{\numberline {10.39} Primo esempio di ricorsione }{49}{lstlisting.10.39}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {10.40} Gestione degli errori }{51}{lstlisting.10.40}% 
+\contentsline {lstlisting}{\numberline {10.40} Secondo esempio di ricorsione }{50}{lstlisting.10.40}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {10.41} Dichiarazione dei costruttori di eccezioni, sintassi }{51}{lstlisting.10.41}% 
+\contentsline {lstlisting}{\numberline {10.41} Accumulatori }{50}{lstlisting.10.41}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {10.42} Esempi di eccezioni }{51}{lstlisting.10.42}% 
+\contentsline {lstlisting}{\numberline {10.42} Ricorsione in coda }{50}{lstlisting.10.42}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {10.43} Eccezioni predefinite e funzioni }{51}{lstlisting.10.43}% 
+\contentsline {lstlisting}{\numberline {10.43} Esempio di ricorsione in coda con accumulatori }{51}{lstlisting.10.43}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {10.44} Esempio di tipi varianti }{51}{lstlisting.10.44}% 
+\contentsline {lstlisting}{\numberline {10.44} Esempio di funzione polimorfica }{51}{lstlisting.10.44}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.45} Definizione di map con ricorsione in coda }{51}{lstlisting.10.45}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.46} Definizione di fold\_left con ricorsione in coda }{52}{lstlisting.10.46}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.47} Esempio di utilizzo di fold\_left }{52}{lstlisting.10.47}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.48} Funzione predefinita la propagazione degli errori }{53}{lstlisting.10.48}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.49} Gestione delle eccezioni }{53}{lstlisting.10.49}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.50} Dichiarazione dei costruttori di eccezioni, sintassi }{53}{lstlisting.10.50}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.51} Esempi di eccezioni }{53}{lstlisting.10.51}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.52} Eccezioni predefinite e funzioni }{53}{lstlisting.10.52}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.53} Esempio di tipi varianti }{53}{lstlisting.10.53}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.54} Esempio con costruttori di arit\IeC {\`a} maggiore di 0 }{54}{lstlisting.10.54}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.55} Esempio di costruttore con ricorsione }{54}{lstlisting.10.55}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.56} Esempio di costruttore polimorfico }{54}{lstlisting.10.56}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.57} Esempio con polimorfismo e ricorsione di costruttore }{54}{lstlisting.10.57}% 
