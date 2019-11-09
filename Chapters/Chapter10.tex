@@ -282,7 +282,7 @@ operazioni.
 Exp ::= 'if' Exp 'then Exp 'else' Exp
 \end{lstlisting}
 
-\section{Variabili globali}
+\subsection{Variabili globali}
 \begin{lstlisting}[
   language=Caml,
   escapeinside={(£}{£)},
@@ -340,7 +340,7 @@ let der_sumcube = gen_sum (fun x->x*x*x);; (* int -> int *)
 Notiamo che $gen\_sum$ può essere specializzato dato che è funzione curry
 ed il primo argomento è $f$ piuttosto che $n$.
 
-\section{Dichiarazione di variabili locali}
+\subsection{Dichiarazione di variabili locali}
 \begin{lstlisting}[
   language=Caml,
   escapeinside={(£}{£)},
@@ -437,6 +437,7 @@ Non dobbiamo passare l'argomento $f$ alla funzione ricorsiva $aux$.
     \end{itemize}
   \item si può usare la notazione $[e_1;e_2;\dots e_n]$ come abbreviazione.
 \end{itemize}
+
 \paragraph{Attenzione}
 L'operatore $;$ all'interno delle quadre ha le proprie regole di precedenza,
 per esempio l'operatore di tupla ha maggiore precedenza.
@@ -446,7 +447,7 @@ Le liste devono essere omogenee, tutti gli elementi devono essere dello stesso
 tipo.
 
 
-Il costruttore unario postfisso è $list$ ha precedenza maggiore dei
+Il costruttore unario postfisso è $list$, ha precedenza maggiore dei
 costruttori $->$ e $*$.
 
 \begin{lstlisting}[
@@ -477,6 +478,10 @@ $e_1::e_2$ ha tipo $\text{t }list$ se e solo se $e_1$ ha tipo $t$ ed $e_2$ ha
 tipo $\text{t }list$.
 
 $e_1::e_2$ non è di tipo corretto se non esiste tipo $t$.
+
+\subsubsection{Polimorfismo}
+Il tipo $\alpha \text{ list}$ si dice di tipo polimordico o di scema, dato che
+$\alpha$ è di tipo variabile.
 
 \subsection{Concatenazione}
 L'operatore binario infisso è associativo a sinistra ed ha minore precedenza
@@ -520,8 +525,6 @@ $e$ sono liste, altrimenti non sarà di tipo corretto.
 
 (@) [1;2] [3;4;5]
 - : int list = [1; 2; 3; 4; 5]
-
-
 \end{lstlisting}
 
 \section{Pattern matching}
