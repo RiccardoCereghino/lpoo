@@ -715,18 +715,181 @@ let ord_swap = function
 \end{lstlisting}
 
 \section{Ricorsione ed efficienza}
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Primo esempio di ricorsione
+  }
+]
+let rec sum = function
+    hd::tl -> hd + sum tl (* caso induttivo *)
+  | _ -> 0;; (* caso base *)
+
+let l=List.init 100_000 (fun x->x+1) (* crea una lista da 1 a 10000 *)
+in sum l;;
+- : int = 5000050000
+
+let l=List.init 1_000_000 (fun x->x+1)
+in sum l;;
+Stack overflow during evaluation.
+\end{lstlisting}
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Secondo esempio di ricorsione
+  }
+]
+let rec reverse = function
+    hd::tl -> reverse tl @ [hd]
+  | _ -> [];;
+
+let l=List.init 10_000 (fun x->x+1)
+in reverse l;;
+\end{lstlisting}
+
+Il primo esempio con \emph{tl @ [hd]} ha una complessita lineare rispetto ad
+$l$, \emph{reverse l} invece ha una complessità quadratica.
+\subsection{Modulo List}
+Il modulo \emph{List} è un modulo di OCaml predefinito, \emph{List.init} è una
+funzione definita in \emph{List}.
+
 
 \section{Accumulatori}
+In OCaml il metodo utilizzato per effettuare dei cicli sono attraverso
+l'utilizzo degli accumulatori.
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Accumulatori
+  }
+]
+let rec loop acc l = match l with (* loop : int -> int list -> int *)
+(* if l=hd::tl allora incremento acc di hd e provo al giro successivo tl *)
+    hd::tl -> loop (acc+hd) tl
+(* se l=[] ritorno acc *)
+  | _ -> acc
+(* loop chiamato con il valore iniziale di acc *)
+in loop 0;; (* loop 0 : int list -> int *)
+\end{lstlisting}
 
 \section{Ricorsione in coda}
+Nella ricorsione in coda, l'applicazione viene sempre eseguita per ultima, può
+essere implementata con un vero e proprio loop.
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Ricorsione in coda
+  }
+]
+let rec loop acc = function
+    hd::tl -> loop (acc+hd) tl
+  | _ -> acc
+in loop 0;;
+\end{lstlisting}
+
 
 \subsection{Ricorsione in coda con accumulatori}
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di ricorsione in coda con accumulatori
+  }
+]
+let acc_rev l = (* parametro l necessario per una funzione polimorfica *)
+  let rec aux acc = function
+      hd::tl -> aux (hd::acc) tl
+    | _ -> acc
+  in aux [] l;;
+
+let l=List.init 10_000 (fun x->x+1)
+in acc_rev l;;
+\end{lstlisting}
 
 \section{Funzioni polimorfiche}
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di funzione polimorfica
+  }
+]
+let acc_rev l =
+  let rec aux acc = function
+      hd::tl -> aux (hd::acc) tl
+    | _ -> acc
+  in aux [] 1;;
+
+acc_rev [1;2;3];;
+- : int list = [3;2;1]
+
+acc_rev [true;true;false];;
+- : bool list = [false; true; true]
+\end{lstlisting}
 
 \section{Stringhe}
+Il tipo primitivo di \emph{string} è supportato, il costruttore è "", la
+concatenazione $\wedge$ è associativa a sinistra; è un modulo predefinito.
 
-\section{Liste}
+\section{Funzioni generiche in List}
+\subsection{map}
+Si usa per applicare una funzione agli elementi di una lista.
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Definizione di map con ricorsione in coda
+  }
+]
+let map f l=
+  let rec aux acc = function
+      hd::tl -> aux (f hd::acc) tl
+    | _ -> acc
+  in aux [] (List.rev l);;
+\end{lstlisting}
+
+\subsection{fold\_left}
+Raprresentazione di un patter generico di liste con accumulatori:
+\[
+  f \quad a_0 \quad [x_1;\dots;x_n] = a_n
+\]
+Dove $a_0$ è il valore iniziale dell'accumulatore e $a_n=fa_{n-1}x_n$.
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Definizione di fold\_left con ricorsione in coda
+  }
+]
+let fold\_left f =
+  let rec aux acc = function
+      hd::tl -> aux (f acc hd) tl
+    | \_ -> acc
+  in aux;;
+\end{lstlisting}
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di utilizzo di fold\_left
+  }
+]
+let square\_list = fold\_left (fun acc hd -> acc+hd+hd) 0
+val square\_list : int list -> int = <fun>
+
+square list [1;2;3;4]
+- : int = 30
+\end{lstlisting}
 
 \section{Eccezioni}
 La gestione di problemi e comportamenti non voluti deve essere eseguita il
