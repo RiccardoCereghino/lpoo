@@ -135,3 +135,5 @@
 \contentsline {lstlisting}{\numberline {10.37} Sintassi di matching di patterns multipli }{48}{lstlisting.10.37}% 
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {10.38} Esempi di pattern matching funzionanti }{49}{lstlisting.10.38}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.1} Sintassi di un oggetto }{51}{lstlisting.11.1}% 

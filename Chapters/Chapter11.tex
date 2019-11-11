@@ -1,0 +1,34 @@
+\chapter{Programmazione orientata agli oggetti}
+Il modello su cui si basa il paradigma è l'invio di messaggi attraverso gli
+oggetti, quando si lancia un programma si invia un messaggio ad un oggetto.
+
+\section{Oggetti}
+Un oggetto è identificato da un nome, mantiene degli stati interni che sono
+solitamente nascosti ed espone i cosiddetti \emph{metodi di istanza}, l'
+interfaccia con cui si può interagire con l'oggetto.
+
+L'invocazione di un metodo di istanza implica che:
+\begin{itemize}
+  \item gli stati interni dell'oggetto possono venire modificati;
+  \item può essere necessario passare degli argomenti alle funzioni;
+  \item la funzione può ritornare un valore.
+\end{itemize}
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Sintassi di un oggetto
+  }
+]
+Exp ::= Exp '.' MID '(' (Exp ( ',' Exp)*)? ')'
+\end{lstlisting}
+
+Dove \emph{MID} è il nome del metodo di istanza.
+
+I metodi di istanza possono essere di ispezione, di modifica, o entrambi.
+
+\subsection{Stato interno}
+Solitamente lo stato interno di un oggetto non è esposto, consiste di \emph{
+campi}: solitamente chiamati \emph{variabili di istanza} o \emph{attributi},
+i quali salvano i dati dell'oggetto, sono solitamente modificabili.
