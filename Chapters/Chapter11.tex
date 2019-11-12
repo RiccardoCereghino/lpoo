@@ -32,3 +32,161 @@ I metodi di istanza possono essere di ispezione, di modifica, o entrambi.
 Solitamente lo stato interno di un oggetto non è esposto, consiste di \emph{
 campi}: solitamente chiamati \emph{variabili di istanza} o \emph{attributi},
 i quali salvano i dati dell'oggetto, sono solitamente modificabili.
+
+\section{Classi}
+Una classe fornisce un implementazione per gli oggetti dello stesso tipo, gli
+oggetti possono essere creati dinamicamente dalle classi, ogni oggetto creato
+da una classe $C$ sono detti \emph{istanza} di $C$, il numero di istanze di un
+oggetto a runtime può crescere o diminuire, perchè possono essere deallocate
+automaticamente o manualmente.
+
+Tutte le istanze condividono gli stessi metodi di istanza, ma ogni istanza ha
+i propri stati interni.
+
+Oggetti creati da una classe $C$ hanno \emph{tipo dinamico} $C$, in un
+linguaggio staticamente tipato si dice anche \emph{tipo statico}.
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Un esempio di classe in Java
+  }
+]
+public class TimerClass {
+  private int time; // variabile di istanza
+
+  // metodo di istanza
+  public boolean isRunning() {
+    return this.time > 0;
+  }
+
+  public int getTime() {
+    return this.time;
+  }
+
+  public void tick() {
+    if (this.time > 0)
+      this.time--;
+  }
+
+  public int reset (int minutes) {
+    if (minutes < 0 || minutes > 60)
+      throw new IllegalArgumentException();
+    int prevTime = this.time;
+    this.time = minutes * 60;
+    return prevTime;
+  }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Utilizzo della classe
+  }
+]
+// Creo un nuovo oggetto e lo assegno a t1
+TimerClass t1 = new TimerClass();
+// Chiamo il metodo di istanza reset
+t1.reset(1);
+// Creo un nuovo oggetto e lo assegno a t2
+TimerClass t2 = new TimerClass();
+// Chiamo il metodo di istanza reset
+t2.reset(2)
+\end{lstlisting}
+
+\subsection{Parola chiave: this}
+La parola chiave \textbf{this} fa riferimento all'oggetto su cui vengono
+chiamati i metodi.
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di utilizzo di this
+  }
+]
+public int reset(int minutes) {
+  if (minutes < 0 || minutes > 60)
+    throw new IllegalArgumentException();
+  int prevTime = this.time;
+  this.time = minutes * 60;
+  return prevTime;
+}
+\end{lstlisting}
+
+\subsection{Information Hiding}
+La visibilità di metodi o campi di un oggetto può essere definita:
+\begin{itemize}
+  \item \textbf{private} il metodo o il campo è visibile solo all'interno della
+    classe;
+  \item \textbf{public} il metodo o il campo è visibile fuori dalla classe;
+  \item \textbf{public class} la dichiarazione della classe è visibile in tutto
+    il programma.
+\end{itemize}
+
+\subsection{Eccezioni}
+La dichiarazione \textbf{throw} si utilizza quando deve essere segnalato un
+errore, la sintassi è $'throw'Exp$, l'argomento di throw deve essere un
+eccezione, la quale è un oggetto particolare.
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di eccezione in Java
+  }
+]
+Throwable ex;
+...
+throw 42; // errore
+throw new NullPointerException();
+throw ex;
+\end{lstlisting}
+
+\subsection{Asserzioni}
+La sintassi delle asserzioni è $'assert'Exp$, dove $Exp$ deve essere un
+booleano, si usano per documentare, testare e validare gli oggetti.
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di asserzione in Java
+  }
+]
+TimerClass tl = new TimerClass();
+t1.reseet(1);
+int seconds = 0;
+while (t1.isRunning()) {
+  t2.tick();
+  seconds++;
+}
+assert seconds == 60;
+assert !t1.isRunning();
+\end{lstlisting}
+
+\subsection{Oggetti come valori}
+Nei linguaggi di programmazione orientati agli oggetti, gli oggetti sono valori
+di primo ordine, ovvero:
+\begin{itemize}
+  \item possono essere passati a variabili;
+  \item possono essere passati come argomenti;
+  \item possono essere ritornati come valori.
+\end{itemize}
+
+Gli oggetti sono rappresentati dalla loro \textbf{identità}, ovvero l'indirizzo
+di memoria dello heap in cui l'oggetto è salvato.
+Motivo per cui gli oggetti sono passati per referenza.
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di oggetti come valori
+  }
+]
+TimerClass t1 = new TimerClass();
+TimerClass t2 = t1;
+TimerClass t3 = null;
+assert t1 == t2 && t1 != t3; // true
+\end{lstlisting}

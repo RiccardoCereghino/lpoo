@@ -137,3 +137,15 @@
 \contentsline {lstlisting}{\numberline {10.38} Esempi di pattern matching funzionanti }{49}{lstlisting.10.38}% 
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {11.1} Sintassi di un oggetto }{51}{lstlisting.11.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.2} Un esempio di classe in Java }{52}{lstlisting.11.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.3} Utilizzo della classe }{52}{lstlisting.11.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.4} Esempio di utilizzo di this }{52}{lstlisting.11.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.5} Esempio di eccezione in Java }{53}{lstlisting.11.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.6} Esempio di asserzione in Java }{53}{lstlisting.11.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.7} Esempio di oggetti come valori }{54}{lstlisting.11.7}% 
