@@ -32,15 +32,15 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {7.4}Grammatica ambigua}{22}{lstlisting.7.4}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {7.5}Associativit\IeC {\`a} a sinistra non ambigua}{23}{lstlisting.7.5}% 
+\contentsline {lstlisting}{\numberline {7.5}Associatività a sinistra non ambigua}{23}{lstlisting.7.5}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {7.6}Associativit\IeC {\`a} a destra non ambigua}{23}{lstlisting.7.6}% 
+\contentsline {lstlisting}{\numberline {7.6}Associatività a destra non ambigua}{23}{lstlisting.7.6}% 
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {7.7}Associative a sinistra non ambigue}{24}{lstlisting.7.7}% 
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {7.8}Associative a destra non ambigue}{24}{lstlisting.7.8}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {7.9}Esempio di ambiguit\IeC {\`a} per gli statements}{25}{lstlisting.7.9}% 
+\contentsline {lstlisting}{\numberline {7.9}Esempio di ambiguità per gli statements}{25}{lstlisting.7.9}% 
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {8.1}Una grammatica non ambigua}{27}{lstlisting.8.1}% 
 \defcounter {refsection}{0}\relax 
@@ -68,7 +68,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {10.4}Esempio di applicazioni}{38}{lstlisting.10.4}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {10.5}Esempio di associativit\IeC {\`a}}{38}{lstlisting.10.5}% 
+\contentsline {lstlisting}{\numberline {10.5}Esempio di associatività}{38}{lstlisting.10.5}% 
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {10.6}Esempio di precedenza}{38}{lstlisting.10.6}% 
 \defcounter {refsection}{0}\relax 
@@ -80,7 +80,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {10.10}Grammatica BNF}{39}{lstlisting.10.10}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {10.11}Associativit\IeC {\`a} a destra dell'operatore freccia}{39}{lstlisting.10.11}% 
+\contentsline {lstlisting}{\numberline {10.11}Associatività a destra dell'operatore freccia}{39}{lstlisting.10.11}% 
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {10.12}Nuove produzioni per Exp e Pat}{40}{lstlisting.10.12}% 
 \defcounter {refsection}{0}\relax 
@@ -136,6 +136,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {10.38} Esempi di pattern matching funzionanti }{49}{lstlisting.10.38}% 
 \defcounter {refsection}{0}\relax 
+<<<<<<< HEAD
 \contentsline {lstlisting}{\numberline {10.39} Primo esempio di ricorsione }{49}{lstlisting.10.39}% 
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {10.40} Secondo esempio di ricorsione }{50}{lstlisting.10.40}% 
@@ -173,3 +174,36 @@
 \contentsline {lstlisting}{\numberline {10.56} Esempio di costruttore polimorfico }{54}{lstlisting.10.56}% 
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {10.57} Esempio con polimorfismo e ricorsione di costruttore }{54}{lstlisting.10.57}% 
+=======
+\contentsline {lstlisting}{\numberline {11.1} Sintassi di un oggetto }{51}{lstlisting.11.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.2} Un esempio di classe in Java }{52}{lstlisting.11.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.3} Utilizzo della classe }{52}{lstlisting.11.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.4} Esempio di utilizzo di this }{52}{lstlisting.11.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.5} Esempio di eccezione in Java }{53}{lstlisting.11.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.6} Esempio di asserzione in Java }{53}{lstlisting.11.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.7} Esempio di oggetti come valori }{54}{lstlisting.11.7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.8} Esempio di Design By Contract }{54}{lstlisting.11.8}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.9} Esempio di costruttori Java }{55}{lstlisting.11.9}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.10} Esempio di uso dei costruttori }{55}{lstlisting.11.10}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.11} Esempio di iinizializzatore di variabile in Java }{56}{lstlisting.11.11}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.12} Esempio di creazione ed inizializzazione di oggetti in Java }{56}{lstlisting.11.12}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.13} (1) Esempio di invocazione dei costruttori esplicita }{56}{lstlisting.11.13}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.14} (2) Esempio di invocazione dei costruttori esplicita }{57}{lstlisting.11.14}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.15} (1) Esempio di variabili di classe }{57}{lstlisting.11.15}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.16} (1) Esempio di variabili di classe }{58}{lstlisting.11.16}% 
+>>>>>>> labs
