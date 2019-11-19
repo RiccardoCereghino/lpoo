@@ -156,7 +156,7 @@ booleano, si usano per documentare, testare e validare gli oggetti.
   }
 ]
 TimerClass tl = new TimerClass();
-t1.reseet(1);
+t1.reset(1);
 int seconds = 0;
 while (t1.isRunning()) {
   t2.tick();
@@ -189,4 +189,257 @@ TimerClass t1 = new TimerClass();
 TimerClass t2 = t1;
 TimerClass t3 = null;
 assert t1 == t2 && t1 != t3; // true
+\end{lstlisting}
+
+\subsection{Tipi e sottotipi}
+Le classi definiscono anche tipi statici, chiamati in Java \emph{reference
+type} ed in altri contesti \emph{object type}.
+
+Ciò significa che se un espressione $e$ è di tipo statico \emph{TimerClass},
+allora $e$ potraà tornare o un istanza di \emph{TimerClass}, o un istanza
+di sottotipo di \emph{TimerClass} o \emph{null}.
+
+\subsection{Design by contract}
+Pre-condizioni, post-condizioni e invarianti su di un metodo:
+\begin{itemize}
+  \item \textbf{requires p}: è necessario che il predicato $p$ sia valido
+    prima dell'esecuzione del metodo;
+  \item \textbf{ensures p}: è necessario che il predicato $p$ sia valido dopo
+    che il metodo è stato eseguito;
+  \item \textbf{invariant per la classe C}: è un predicato che deve essere
+    valido alla creazione di ogni istanza di $C$, e prima e dopo l'esecuzione
+    di ogni metodo di $C$.
+\end{itemize}
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di Design By Contract
+  }
+]
+public class TimerClass {
+  private int time;
+  /* invariant 0 <= time && time <= 3600; */
+
+  public int reset(int minutes)
+  /*  requires 0 <= minutes && minutes <= 60;
+      ensures  result == old(this.time)
+               && this.time == minutes * 60; */
+  {
+    if (minutes < 0 || minutes > 60)
+      throw new IllegalArgumentException();
+    int prevTime = this.time;
+    this.time = minutes * 60;
+    return prevTime;
+  }
+
+  public boolean isRunning()
+  /* ensures result == this.time > 0
+             && this.time == old(this.time); */
+  {
+    return this.time > 0;
+  }
+  ...
+}
+\end{lstlisting}
+
+Per assicurare il funzionamento del \textbf{DBC}, si utilizza l' \emph{
+information hiding} (lo stato dell'oggetto è modificabile solo tramite l'
+utilizzo di metodi), la presenza di \emph{invariants} in tutti i metodi.
+
+\section{Costruttori}
+I costruttori in Java possono essere \emph{overloaded}.
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di costruttori Java
+  }
+]
+public class TimerClass (
+  private int time;
+
+  public TimerClass() {
+  }
+  
+  public TimerClass(int minutes) {
+    if (minutes < 0 || minutes > 60)
+      throw new IllegalArgumentException();
+    this.time = minutes * 60;
+  }
+
+  public TimerClass(TimerClass otherTimer) {
+    this.time = otherTimer.time;
+  }
+...
+}
+\end{lstlisting}
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di uso dei costruttori
+  }
+]
+TimerClass t1 = new TimerClass();
+TimerClass t2 = new TimerClass(42);
+TimerClass t3 = new TimerClass(t2);
+
+assert t1.getTime()==0 && t2.getTime()==42*60 &&
+       t2.getTime() == t2.getTime();
+\end{lstlisting}
+
+\section{Creazione ed inizializzazione degli oggetti}
+Immediatamente dopo la creazione di un oggetto dei valori di default vengono
+assegnati ad ogni variabile di istanza dell'oggetto.
+Il valore di default è determinato dal tipo dichiarato per quella variabile, se
+presente un inizializzatore di variabile di istanza invece viene eseguito.
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di iinizializzatore di variabile in Java
+  }
+]
+public class TimerClass {
+  private int time = 60;
+
+  public TimerClass() {
+  }
+
+  public TimerClass(int minutes) {
+    if (minutes < 0 || minutes > 60)
+      throw new IllegalArgumentException();
+    this,time = minutes * 60;
+  }
+  public TimerClass(TimerClass otherTimer) {
+    this.time = otherTimer.time;
+  }
+...
+}
+\end{lstlisting}
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di creazione ed inizializzazione di oggetti in Java
+  }
+]
+TimerClass timer1 = new TimerClass();
+TimerClass timer2 = new TimerClass(1);
+
+assert timer1.getTime() == timer2.getTime();
+\end{lstlisting}
+
+\subsection{Costruttori}
+Multipli costruttori possono essere definiti, gli stessi devono differire nel
+numero o nel tipo di parametri, un costruttore di default è definito se
+nessun costruttore è presente, non ha parametri ed è vuoto.
+
+Un costruttore può essere invocato esplicitamente in un altro costruttore,
+l'invocazione può essere eseguita \textbf{solo nella prima linea}.
+
+\emph{'this' '(' (Exp ( ',' Exp)*)?')'}
+
+Da notare che i campi degli oggetti non possono essere aggiunti o rimossi
+a \emph{runtime}, i campi non opzionali devono avere sempre un valore definito
+mentre i campi opzionali possono avere un valore non definito, in Java per
+valore indefinito si intende \textbf{null}.
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    (1) Esempio di invocazione dei costruttori esplicita
+  }
+]
+public class Person {
+  private String name;
+  private String address;
+
+  public Person(String name) {
+    if(name == null)
+      throw new NullPointerException();
+    this.name = name;
+  }
+
+  public Person (String name, String address) {
+    this(name);
+    this.address = address;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getAddress() {
+    return address;
+  }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    (2) Esempio di invocazione dei costruttori esplicita
+  }
+]
+Person sam = new Person("Samuele");
+Person sim = new Person("Simone","Genova");
+assert sam.getAddress()=null && sim.getAddress()!=null;
+\end{lstlisting}
+
+\section{Variabili di classe}
+In java ci sono le variabili di istanza, che sono gli attributi degli oggetti e
+le variabili di classe che sono gli attrivuti della classe.
+La sintassi (\emph{CID}:class identifier, \emph{FID}:field identifier):
+\begin{itemize}
+  \item \textbf{field read:} \emph{CID *.*FID}
+  \item \textbf{field update:} \emph{CID '.'FID '='Exp}
+\end{itemize}
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    (1) Esempio di variabili di classe
+  }
+]
+public class Item {
+  private static long nextSN;
+  private int price;
+  private long SerialNumber;
+  
+  public Item(int price) {
+    if(price < 0)
+      throw new IllegalArgumentException();
+    this.price = price;
+    this.serialNumber = Item.nextSN++;
+  }
+
+  public int getPrice() {
+    return this.price;
+  }
+
+  public long getSerialNumber() {
+    return this.SerialNumber;
+  }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    (1) Esempio di variabili di classe
+  }
+]
+Item item1 = new Item(61_50);
+Item item2 = new Item(14_00);
+
+assert item1.getPrice() == 61_50 && item1.getSerialNumber() == 0;
+assert item2.getPrice() == 14_00 && item2.getSerialNumber() == 0;
 \end{lstlisting}
