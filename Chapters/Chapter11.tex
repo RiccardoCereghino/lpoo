@@ -443,3 +443,143 @@ Item item2 = new Item(14_00);
 assert item1.getPrice() == 61_50 && item1.getSerialNumber() == 0;
 assert item2.getPrice() == 14_00 && item2.getSerialNumber() == 0;
 \end{lstlisting}
+
+\subsection{Inizializzazione}
+Una variabile di classe è inizializzata dopo che la classe è stata caricata
+e linkata, vi è assegnato un valore di default, così come per le variabili
+di istanza; gli inizializzatori sono eseguiti in ordine testuale.
+
+\section{Metodi di classe}
+Mentre i metodi di istanza sono invocati su di un oggetto (\textbf{this}),
+i metodi di classe sono invocati sulle classi.
+
+La sintassi:
+\emph{CID '.' MID '(' (Exp ( ',' Exp)*)? ')'}
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di metodi di classe in Java
+  }
+]
+public class Rectangle {
+  private static int defaultSize = 1; //inizializzatore di variabile di classe
+  private int width = Rectangle.defaultSize;
+  private int height = Rectangle.defaultSize;
+  // invariand width > 0 && height > 0
+  private static void checkSize(int size) {
+    if (size <= 0)
+      throw new IllegalArgumentException();
+  }
+  
+  public Rectangle(int width, int height) {
+    Rectangle.checkSize(width);
+    Rectangle.checkSize(height);
+    this.width = width;
+    this.height = height;
+  }
+
+  // static factory method
+  public static Rectangle ofWidthHeight(int width, int height) {
+    return new Rectangle(width, height);
+  }
+  ...
+  ...
+  Rectangle r1 = new Rectangle(3,5);
+  Rectangle r2 = Rectangle.ofWidthHeight(3,5);
+\end{lstlisting}
+
+\section{Classe Object}
+\emph{Object} è una classe predefinita speciale: ogni altra classe è
+\textit{sottotipo} di \emph{Object}.
+
+Se un espressione ha tipo statico Object, allora risulta in:
+\begin{itemize}
+  \item un istanza di una sottoclasse di Object (qualsiasi classe);
+  \item \textbf{null};
+  \item un \emph{array}.
+\end{itemize}
+
+\subsection{Subtyping}
+I sottotipi definiscono una relazione tra tipi in maniera gerarchica.
+
+Ogni tipo oggetto è sottotipo di \emph{Object}, ma l'oggetto ed i suoi
+primitivi non sono comparabili.
+
+Le proprietà che variano a seconda della struttura gerarchica sono:
+\begin{itemize}
+  \item \textbf{riflessiva:} $T\leq T$;
+  \item \textbf{antisimmetrica:} $T_1\leq T_2\cap T_2\leq T_1\rightarrow
+    T_1=T_2$;
+  \item \textbf{transitiva:} $T_1\leq T_2\cap T_2\leq T_3\rightarrow
+    T_1\leq T_3$;
+
+\end{itemize}
+
+Se è richiesto un tipo $T$, qualsiasi sottotipo di $T$ è valido.
+
+Gli oggetti hanno due tipi diversi di uguaglianza:
+\begin{itemize}
+  \item \textbf{forte:} \emph{person1 == person2} se riferiscono alla stessa
+    persona;
+  \item \textbf{debole:} \emph{person1.equals(person2)} compara gli attributi,
+    quindi possono essere uguali, ma essere due oggetti diversi.
+\end{itemize}
+
+\section{Stringhe}
+Le stringhe sono oggetti immutabili, ovvero che le variabili di istanza non
+possono essere cambiate dopo l'inizializzazione.
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di ereditarietà in Java
+  }
+]
+public class Point {
+  private int x;
+  private int y;
+  public Point(int x, int y) {
+    this.x = x;
+    this.y = y;
+  }
+  public Point(Point p) {
+    this(p.x, p.y);
+  }
+  public int getX() {
+    return this.x;
+  }
+  public int getY() {
+    return this.y;
+  }
+  public void move(int dx, dy) {
+    this.x += dx;
+    this.y += dy;
+  }
+  public boolean overlaps(Point p) {
+    return this.x == p.x && this.y == p.y;
+  }
+}
+
+public class Line {
+  private Point a;
+  private Point b;
+
+  public Line(Point a, Point b) {
+    if(a.overlaps(b))
+      throw new IllegalArgumentException();
+    this.a = a;
+    this.b = b;
+  }
+  public void move(int dx, int dy) {
+    this.a.move(dx, dy);
+    this.b.move(dx, dy);
+  }
+  public boolean overlaps(Line l) {
+    return this.a.overlaps(l.a) && this.b.overlaps(l.b)
+      || this.a.overlaps(l.b) && this.b.overlaps(l.a);
+  }
+}
+\end{lstlisting}
