@@ -28,22 +28,26 @@ Num ::= '0' | '1'
 \end{lstlisting}
 
 \subsubsection{Albero di derivazione per "1*1+1"}
+\begin{figure}[h]
+    \centering
+    \incfig{dtree-1}
+    \caption{Albero di derivazione per "1*1+1""}
+    \label{fig:dtree-1}
+\end{figure}
+
+\paragraph{Esercizio:}
 Mostrare che $"1*1+1"\in L_{\text{Exp}}$ usando la nozione di
 derivazione ad uno o più passi.
 \[
-  \begin{split}
-    Exp\rightarrow Exp'+'Exp\rightarrow^+ Exp\times Exp'+'Num'\\
-    \rightarrow^+ Num'*'Num'+'1'\\
-    \rightarrow^+ \text{'1' '*' '1' '+' '1'}
-  \end{split}
+  Exp\rightarrow Exp'+'Exp\rightarrow^+ Exp\times Exp'+'Num'
+  \rightarrow^+ Num'*'Num'+'1'
+  \rightarrow^+ \text{'1' '*' '1' '+' '1'}
 \]
 \paragraph{Esercizio:}
 Mostrare che $"1+(\not\in L_{\text{Exp}}$:
 \[
-  \begin{split}
-    Exp\rightarrow Exp '*' Exp\rightarrow^+ Num '*' Exp '+' Exp \rightarrow^+\\
-    \text{'1' '*' Num '+' Num}\rightarrow^+\text{'1' '*' '1' '+' '1'}
-  \end{split}
+  Exp\rightarrow Exp '*' Exp\rightarrow^+ Num '*' Exp '+' Exp \rightarrow^+
+\text{'1' '*' Num '+' Num}\rightarrow^+\text{'1' '*' '1' '+' '1'}
 \]
 
 \subsection{Definizione di albero di derivazione in G=(T,N,P)}

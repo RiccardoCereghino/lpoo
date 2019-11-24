@@ -17,11 +17,7 @@ Pat ::= ID // pattern semplificato
     [\backslash w']*$;
   \item \textbf{NUM} rappresenta i numeri naturali:
     \[
-      \begin{split}
-        0[bB][01][01\_]*|0[oO][0-7][0-7\_]*\\
-        |0[xX][0-9a-fA-F][0-9a-fA-F\_]*\\
-        |\backslash d[\backslash d\_]*
-      \end{split}
+      0[bB][01][01\_]*|0[oO][0-7][0-7\_]*|0[xX][0-9a-fA-F][0-9a-fA-F\_]*|\backslash d[\backslash d\_]*
     \];
   \item \textbf{UOP} rappresenta operatori aritmetici unari $[+-]$;
   \item \textbf{BOP} rappresenta operatori aritmetici binari $[+-*\backslash]|mod$;

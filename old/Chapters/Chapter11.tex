@@ -1,0 +1,585 @@
+\chapter{Programmazione orientata agli oggetti}
+Il modello su cui si basa il paradigma è l'invio di messaggi attraverso gli
+oggetti, quando si lancia un programma si invia un messaggio ad un oggetto.
+
+\section{Oggetti}
+Un oggetto è identificato da un nome, mantiene degli stati interni che sono
+solitamente nascosti ed espone i cosiddetti \emph{metodi di istanza}, l'
+interfaccia con cui si può interagire con l'oggetto.
+
+L'invocazione di un metodo di istanza implica che:
+\begin{itemize}
+  \item gli stati interni dell'oggetto possono venire modificati;
+  \item può essere necessario passare degli argomenti alle funzioni;
+  \item la funzione può ritornare un valore.
+\end{itemize}
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Sintassi di un oggetto
+  }
+]
+Exp ::= Exp '.' MID '(' (Exp ( ',' Exp)*)? ')'
+\end{lstlisting}
+
+Dove \emph{MID} è il nome del metodo di istanza.
+
+I metodi di istanza possono essere di ispezione, di modifica, o entrambi.
+
+\subsection{Stato interno}
+Solitamente lo stato interno di un oggetto non è esposto, consiste di \emph{
+campi}: solitamente chiamati \emph{variabili di istanza} o \emph{attributi},
+i quali salvano i dati dell'oggetto, sono solitamente modificabili.
+
+\section{Classi}
+Una classe fornisce un implementazione per gli oggetti dello stesso tipo, gli
+oggetti possono essere creati dinamicamente dalle classi, ogni oggetto creato
+da una classe $C$ sono detti \emph{istanza} di $C$, il numero di istanze di un
+oggetto a runtime può crescere o diminuire, perchè possono essere deallocate
+automaticamente o manualmente.
+
+Tutte le istanze condividono gli stessi metodi di istanza, ma ogni istanza ha
+i propri stati interni.
+
+Oggetti creati da una classe $C$ hanno \emph{tipo dinamico} $C$, in un
+linguaggio staticamente tipato si dice anche \emph{tipo statico}.
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Un esempio di classe in Java
+  }
+]
+public class TimerClass {
+  private int time; // variabile di istanza
+
+  // metodo di istanza
+  public boolean isRunning() {
+    return this.time > 0;
+  }
+
+  public int getTime() {
+    return this.time;
+  }
+
+  public void tick() {
+    if (this.time > 0)
+      this.time--;
+  }
+
+  public int reset (int minutes) {
+    if (minutes < 0 || minutes > 60)
+      throw new IllegalArgumentException();
+    int prevTime = this.time;
+    this.time = minutes * 60;
+    return prevTime;
+  }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Utilizzo della classe
+  }
+]
+// Creo un nuovo oggetto e lo assegno a t1
+TimerClass t1 = new TimerClass();
+// Chiamo il metodo di istanza reset
+t1.reset(1);
+// Creo un nuovo oggetto e lo assegno a t2
+TimerClass t2 = new TimerClass();
+// Chiamo il metodo di istanza reset
+t2.reset(2)
+\end{lstlisting}
+
+\subsection{Parola chiave: this}
+La parola chiave \textbf{this} fa riferimento all'oggetto su cui vengono
+chiamati i metodi.
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di utilizzo di this
+  }
+]
+public int reset(int minutes) {
+  if (minutes < 0 || minutes > 60)
+    throw new IllegalArgumentException();
+  int prevTime = this.time;
+  this.time = minutes * 60;
+  return prevTime;
+}
+\end{lstlisting}
+
+\subsection{Information Hiding}
+La visibilità di metodi o campi di un oggetto può essere definita:
+\begin{itemize}
+  \item \textbf{private} il metodo o il campo è visibile solo all'interno della
+    classe;
+  \item \textbf{public} il metodo o il campo è visibile fuori dalla classe;
+  \item \textbf{public class} la dichiarazione della classe è visibile in tutto
+    il programma.
+\end{itemize}
+
+\subsection{Eccezioni}
+La dichiarazione \textbf{throw} si utilizza quando deve essere segnalato un
+errore, la sintassi è $'throw'Exp$, l'argomento di throw deve essere un
+eccezione, la quale è un oggetto particolare.
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di eccezione in Java
+  }
+]
+Throwable ex;
+...
+throw 42; // errore
+throw new NullPointerException();
+throw ex;
+\end{lstlisting}
+
+\subsection{Asserzioni}
+La sintassi delle asserzioni è $'assert'Exp$, dove $Exp$ deve essere un
+booleano, si usano per documentare, testare e validare gli oggetti.
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di asserzione in Java
+  }
+]
+TimerClass tl = new TimerClass();
+t1.reset(1);
+int seconds = 0;
+while (t1.isRunning()) {
+  t2.tick();
+  seconds++;
+}
+assert seconds == 60;
+assert !t1.isRunning();
+\end{lstlisting}
+
+\subsection{Oggetti come valori}
+Nei linguaggi di programmazione orientati agli oggetti, gli oggetti sono valori
+di primo ordine, ovvero:
+\begin{itemize}
+  \item possono essere passati a variabili;
+  \item possono essere passati come argomenti;
+  \item possono essere ritornati come valori.
+\end{itemize}
+
+Gli oggetti sono rappresentati dalla loro \textbf{identità}, ovvero l'indirizzo
+di memoria dello heap in cui l'oggetto è salvato.
+Motivo per cui gli oggetti sono passati per referenza.
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di oggetti come valori
+  }
+]
+TimerClass t1 = new TimerClass();
+TimerClass t2 = t1;
+TimerClass t3 = null;
+assert t1 == t2 && t1 != t3; // true
+\end{lstlisting}
+
+\subsection{Tipi e sottotipi}
+Le classi definiscono anche tipi statici, chiamati in Java \emph{reference
+type} ed in altri contesti \emph{object type}.
+
+Ciò significa che se un espressione $e$ è di tipo statico \emph{TimerClass},
+allora $e$ potraà tornare o un istanza di \emph{TimerClass}, o un istanza
+di sottotipo di \emph{TimerClass} o \emph{null}.
+
+\subsection{Design by contract}
+Pre-condizioni, post-condizioni e invarianti su di un metodo:
+\begin{itemize}
+  \item \textbf{requires p}: è necessario che il predicato $p$ sia valido
+    prima dell'esecuzione del metodo;
+  \item \textbf{ensures p}: è necessario che il predicato $p$ sia valido dopo
+    che il metodo è stato eseguito;
+  \item \textbf{invariant per la classe C}: è un predicato che deve essere
+    valido alla creazione di ogni istanza di $C$, e prima e dopo l'esecuzione
+    di ogni metodo di $C$.
+\end{itemize}
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di Design By Contract
+  }
+]
+public class TimerClass {
+  private int time;
+  /* invariant 0 <= time && time <= 3600; */
+
+  public int reset(int minutes)
+  /*  requires 0 <= minutes && minutes <= 60;
+      ensures  result == old(this.time)
+               && this.time == minutes * 60; */
+  {
+    if (minutes < 0 || minutes > 60)
+      throw new IllegalArgumentException();
+    int prevTime = this.time;
+    this.time = minutes * 60;
+    return prevTime;
+  }
+
+  public boolean isRunning()
+  /* ensures result == this.time > 0
+             && this.time == old(this.time); */
+  {
+    return this.time > 0;
+  }
+  ...
+}
+\end{lstlisting}
+
+Per assicurare il funzionamento del \textbf{DBC}, si utilizza l' \emph{
+information hiding} (lo stato dell'oggetto è modificabile solo tramite l'
+utilizzo di metodi), la presenza di \emph{invariants} in tutti i metodi.
+
+\section{Costruttori}
+I costruttori in Java possono essere \emph{overloaded}.
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di costruttori Java
+  }
+]
+public class TimerClass (
+  private int time;
+
+  public TimerClass() {
+  }
+  
+  public TimerClass(int minutes) {
+    if (minutes < 0 || minutes > 60)
+      throw new IllegalArgumentException();
+    this.time = minutes * 60;
+  }
+
+  public TimerClass(TimerClass otherTimer) {
+    this.time = otherTimer.time;
+  }
+...
+}
+\end{lstlisting}
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di uso dei costruttori
+  }
+]
+TimerClass t1 = new TimerClass();
+TimerClass t2 = new TimerClass(42);
+TimerClass t3 = new TimerClass(t2);
+
+assert t1.getTime()==0 && t2.getTime()==42*60 &&
+       t2.getTime() == t2.getTime();
+\end{lstlisting}
+
+\section{Creazione ed inizializzazione degli oggetti}
+Immediatamente dopo la creazione di un oggetto dei valori di default vengono
+assegnati ad ogni variabile di istanza dell'oggetto.
+Il valore di default è determinato dal tipo dichiarato per quella variabile, se
+presente un inizializzatore di variabile di istanza invece viene eseguito.
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di iinizializzatore di variabile in Java
+  }
+]
+public class TimerClass {
+  private int time = 60;
+
+  public TimerClass() {
+  }
+
+  public TimerClass(int minutes) {
+    if (minutes < 0 || minutes > 60)
+      throw new IllegalArgumentException();
+    this,time = minutes * 60;
+  }
+  public TimerClass(TimerClass otherTimer) {
+    this.time = otherTimer.time;
+  }
+...
+}
+\end{lstlisting}
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di creazione ed inizializzazione di oggetti in Java
+  }
+]
+TimerClass timer1 = new TimerClass();
+TimerClass timer2 = new TimerClass(1);
+
+assert timer1.getTime() == timer2.getTime();
+\end{lstlisting}
+
+\subsection{Costruttori}
+Multipli costruttori possono essere definiti, gli stessi devono differire nel
+numero o nel tipo di parametri, un costruttore di default è definito se
+nessun costruttore è presente, non ha parametri ed è vuoto.
+
+Un costruttore può essere invocato esplicitamente in un altro costruttore,
+l'invocazione può essere eseguita \textbf{solo nella prima linea}.
+
+\emph{'this' '(' (Exp ( ',' Exp)*)?')'}
+
+Da notare che i campi degli oggetti non possono essere aggiunti o rimossi
+a \emph{runtime}, i campi non opzionali devono avere sempre un valore definito
+mentre i campi opzionali possono avere un valore non definito, in Java per
+valore indefinito si intende \textbf{null}.
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    (1) Esempio di invocazione dei costruttori esplicita
+  }
+]
+public class Person {
+  private String name;
+  private String address;
+
+  public Person(String name) {
+    if(name == null)
+      throw new NullPointerException();
+    this.name = name;
+  }
+
+  public Person (String name, String address) {
+    this(name);
+    this.address = address;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getAddress() {
+    return address;
+  }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    (2) Esempio di invocazione dei costruttori esplicita
+  }
+]
+Person sam = new Person("Samuele");
+Person sim = new Person("Simone","Genova");
+assert sam.getAddress()=null && sim.getAddress()!=null;
+\end{lstlisting}
+
+\section{Variabili di classe}
+In java ci sono le variabili di istanza, che sono gli attributi degli oggetti e
+le variabili di classe che sono gli attrivuti della classe.
+La sintassi (\emph{CID}:class identifier, \emph{FID}:field identifier):
+\begin{itemize}
+  \item \textbf{field read:} \emph{CID *.*FID}
+  \item \textbf{field update:} \emph{CID '.'FID '='Exp}
+\end{itemize}
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    (1) Esempio di variabili di classe
+  }
+]
+public class Item {
+  private static long nextSN;
+  private int price;
+  private long SerialNumber;
+  
+  public Item(int price) {
+    if(price < 0)
+      throw new IllegalArgumentException();
+    this.price = price;
+    this.serialNumber = Item.nextSN++;
+  }
+
+  public int getPrice() {
+    return this.price;
+  }
+
+  public long getSerialNumber() {
+    return this.SerialNumber;
+  }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    (1) Esempio di variabili di classe
+  }
+]
+Item item1 = new Item(61_50);
+Item item2 = new Item(14_00);
+
+assert item1.getPrice() == 61_50 && item1.getSerialNumber() == 0;
+assert item2.getPrice() == 14_00 && item2.getSerialNumber() == 0;
+\end{lstlisting}
+
+\subsection{Inizializzazione}
+Una variabile di classe è inizializzata dopo che la classe è stata caricata
+e linkata, vi è assegnato un valore di default, così come per le variabili
+di istanza; gli inizializzatori sono eseguiti in ordine testuale.
+
+\section{Metodi di classe}
+Mentre i metodi di istanza sono invocati su di un oggetto (\textbf{this}),
+i metodi di classe sono invocati sulle classi.
+
+La sintassi:
+\emph{CID '.' MID '(' (Exp ( ',' Exp)*)? ')'}
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di metodi di classe in Java
+  }
+]
+public class Rectangle {
+  private static int defaultSize = 1; //inizializzatore di variabile di classe
+  private int width = Rectangle.defaultSize;
+  private int height = Rectangle.defaultSize;
+  // invariand width > 0 && height > 0
+  private static void checkSize(int size) {
+    if (size <= 0)
+      throw new IllegalArgumentException();
+  }
+  
+  public Rectangle(int width, int height) {
+    Rectangle.checkSize(width);
+    Rectangle.checkSize(height);
+    this.width = width;
+    this.height = height;
+  }
+
+  // static factory method
+  public static Rectangle ofWidthHeight(int width, int height) {
+    return new Rectangle(width, height);
+  }
+  ...
+  ...
+  Rectangle r1 = new Rectangle(3,5);
+  Rectangle r2 = Rectangle.ofWidthHeight(3,5);
+\end{lstlisting}
+
+\section{Classe Object}
+\emph{Object} è una classe predefinita speciale: ogni altra classe è
+\textit{sottotipo} di \emph{Object}.
+
+Se un espressione ha tipo statico Object, allora risulta in:
+\begin{itemize}
+  \item un istanza di una sottoclasse di Object (qualsiasi classe);
+  \item \textbf{null};
+  \item un \emph{array}.
+\end{itemize}
+
+\subsection{Subtyping}
+I sottotipi definiscono una relazione tra tipi in maniera gerarchica.
+
+Ogni tipo oggetto è sottotipo di \emph{Object}, ma l'oggetto ed i suoi
+primitivi non sono comparabili.
+
+Le proprietà che variano a seconda della struttura gerarchica sono:
+\begin{itemize}
+  \item \textbf{riflessiva:} $T\leq T$;
+  \item \textbf{antisimmetrica:} $T_1\leq T_2\cap T_2\leq T_1\rightarrow
+    T_1=T_2$;
+  \item \textbf{transitiva:} $T_1\leq T_2\cap T_2\leq T_3\rightarrow
+    T_1\leq T_3$;
+
+\end{itemize}
+
+Se è richiesto un tipo $T$, qualsiasi sottotipo di $T$ è valido.
+
+Gli oggetti hanno due tipi diversi di uguaglianza:
+\begin{itemize}
+  \item \textbf{forte:} \emph{person1 == person2} se riferiscono alla stessa
+    persona;
+  \item \textbf{debole:} \emph{person1.equals(person2)} compara gli attributi,
+    quindi possono essere uguali, ma essere due oggetti diversi.
+\end{itemize}
+
+\section{Stringhe}
+Le stringhe sono oggetti immutabili, ovvero che le variabili di istanza non
+possono essere cambiate dopo l'inizializzazione.
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di ereditarietà in Java
+  }
+]
+public class Point {
+  private int x;
+  private int y;
+  public Point(int x, int y) {
+    this.x = x;
+    this.y = y;
+  }
+  public Point(Point p) {
+    this(p.x, p.y);
+  }
+  public int getX() {
+    return this.x;
+  }
+  public int getY() {
+    return this.y;
+  }
+  public void move(int dx, dy) {
+    this.x += dx;
+    this.y += dy;
+  }
+  public boolean overlaps(Point p) {
+    return this.x == p.x && this.y == p.y;
+  }
+}
+
+public class Line {
+  private Point a;
+  private Point b;
+
+  public Line(Point a, Point b) {
+    if(a.overlaps(b))
+      throw new IllegalArgumentException();
+    this.a = a;
+    this.b = b;
+  }
+  public void move(int dx, int dy) {
+    this.a.move(dx, dy);
+    this.b.move(dx, dy);
+  }
+  public boolean overlaps(Line l) {
+    return this.a.overlaps(l.a) && this.b.overlaps(l.b)
+      || this.a.overlaps(l.b) && this.b.overlaps(l.a);
+  }
+}
+\end{lstlisting}
