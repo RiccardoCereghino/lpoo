@@ -583,3 +583,117 @@ public class Line {
   }
 }
 \end{lstlisting}
+
+Da notare che i \emph{Point} che vengono utilizzati in questo esempio da \emph{
+Line}, sono condivisi tra varie istanze di \emph{Line}, per cui se si vogliono
+creare linee che non dipendono tra loro, bisognerà specificare la possessione
+dei punti tramite un \textbf{private}.
+
+\section{Shallow e deep copy}
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Shallow copy in Java
+  }
+]
+public Line(line l) {
+  this.a = l.a;
+  this.b = l.b;
+}
+\end{lstlisting}
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Deep copy in Java
+  }
+]
+public Line(line l) {
+  this.a = new Point(l.a);
+  this.b = new Point(l.b);
+}
+\end{lstlisting}
+
+\section{Variabili final}
+Le variabili di istanza, di classe o locali possono essere dichiarate di tipo
+\textbf{final}, in sola lettura.
+
+Da notare che se \textbf{final} è applicato ad una variabile di tipo oggetto,
+nonostante si farà riferimento allo stesso oggetto, lo stesso potrà essere
+modificato.
+
+\subsection{Oggetti immutabili}
+Un oggetto si dice immutabile se tutte le variabili di istanza sono \textbf{
+final} ed ogni variabile di istanza contiene o un valore primitivo, o un
+oggetto immutabile.
+
+\section{Interfacce}
+Per effettuare operazioni tra oggetti diversi si possono adoperare le \textbf{
+interfacce}, vengono definiti dei \emph{supertipi} per associare più oggetti
+tra loro.
+
+Una classe può implementare più interfacce, tutti i metodi di un interfaccia
+sono implicitamente \textbf{public} e \textbf{abstract} (senza corpo).
+
+\begin{lstlisting}[
+  language=Caml,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di interfaccia in OCaml
+  }
+]
+type shape = Square of float | Circle of float
+  | Rectangle of float * float;;
+
+let perimeter = function
+    Square side -> 4.0 *. side
+  | Circle ray -> 2.0 *. (width +. height)
+  | Rectangle (width,height) -> 2.0 *. (width +. height);;
+
+let area = function
+    Square side -> side *. side
+  | Circle ray -> Float.pi *. ray *. ray
+  | Rectangle (width,height) -> width *. height;;
+\end{lstlisting}
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di interfaccia in Java
+  }
+]
+public interface Shape {
+  double perimeter();
+  double area();
+}
+
+public class Square implements Shape {
+  private double side;
+  ...
+  public double perimeter() {return 4 * this.side; }
+  public double area() { return this.side * this.side; }
+}
+
+public class Rectangle implements Shape {
+  private double width;
+  private double height;
+  ...
+  public double perimeter() {return 2 * (this.width + this.height); }
+  public double area() { return this.width * this.height; }
+}
+
+public class Circle implements Shape {
+  private double radius;
+  ...
+  public double perimeter() {return 2 * Math.PI * this.radius; }
+  public double area() { return Math.PI * this.radius^2; }
+}
+\end{lstlisting}
+
+Gli approcci sono diversi tra linguaggi funzionali ed ad oggetti, i primi
+strutturano il codice dividendolo per operazione ed usano il pattern matching
+per gestire i vari tipi di dato, nei linguaggi ad oggetti invece il codice
+identifica i dati per tipo ed ogni classe implementa le operazioni.
