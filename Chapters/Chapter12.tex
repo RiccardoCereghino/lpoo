@@ -116,5 +116,50 @@ Pacchetti e sottopacchetti possono contenere solo sottopacchetti, i
 sottopacchetti devono avere un nome che rifletta il percorso di sistema.
 
 \subsubsection{Imports}
-Si possono usare \emph{type imports}, 
+Si possono usare \emph{type imports}, per fare riferimento ad una classe 
+dichiarata in un altro pacchetto con il suo nome.
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Import in java
+  }
+]
+import java.util.Scanner;
+import java.lang.*;
+\end{lstlisting}
 
+Inoltre si possono importare staticamente metodi così da abbreviarne l'utilizzo
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempio di static import in Java
+  }
+]
+import static java.lang.System.out;
+
+...
+out("Posso usare System.out scrivendo solo out");
+\end{lstlisting}
+
+\section{Oggetti e tipi primitivi}
+Assegnare tipi agli oggetti permette che i valori possano essere gestiti
+uniformamente attraverso referenze.
+Le conversioni tra primitivi a valori di tipo oggetto si dicono \textbf{boxing}
+mentre quelle da oggetto a primitivo si dicono \textbf{unboxing}.
+
+\begin{lstlisting}[
+  language=Java,
+  escapeinside={(£}{£)},
+  caption={
+    Esempi di oggetti e tipi primitivi in Java
+  }
+]
+assert 5 / 2 == 2;
+assert 5 / 2. == 2.5;
+Integer i = 5;
+assert i * 2 == 10;
+assert i * i == 25;
+assert i / 2. == 2.5;
+\end{lstlisting}
