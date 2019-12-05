@@ -136,34 +136,76 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {10.38} Esempi di pattern matching funzionanti }{49}{lstlisting.10.38}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {11.1} Sintassi di un oggetto }{51}{lstlisting.11.1}% 
+\contentsline {lstlisting}{\numberline {10.39} Primo esempio di ricorsione }{49}{lstlisting.10.39}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {11.2} Un esempio di classe in Java }{52}{lstlisting.11.2}% 
+\contentsline {lstlisting}{\numberline {10.40} Secondo esempio di ricorsione }{50}{lstlisting.10.40}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {11.3} Utilizzo della classe }{52}{lstlisting.11.3}% 
+\contentsline {lstlisting}{\numberline {10.41} Accumulatori }{50}{lstlisting.10.41}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {11.4} Esempio di utilizzo di this }{52}{lstlisting.11.4}% 
+\contentsline {lstlisting}{\numberline {10.42} Ricorsione in coda }{50}{lstlisting.10.42}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {11.5} Esempio di eccezione in Java }{53}{lstlisting.11.5}% 
+\contentsline {lstlisting}{\numberline {10.43} Esempio di ricorsione in coda con accumulatori }{51}{lstlisting.10.43}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {11.6} Esempio di asserzione in Java }{53}{lstlisting.11.6}% 
+\contentsline {lstlisting}{\numberline {10.44} Esempio di funzione polimorfica }{51}{lstlisting.10.44}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {11.7} Esempio di oggetti come valori }{54}{lstlisting.11.7}% 
+\contentsline {lstlisting}{\numberline {10.45} Definizione di map con ricorsione in coda }{51}{lstlisting.10.45}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {11.8} Esempio di Design By Contract }{54}{lstlisting.11.8}% 
+\contentsline {lstlisting}{\numberline {10.46} Definizione di fold\_left con ricorsione in coda }{52}{lstlisting.10.46}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {11.9} Esempio di costruttori Java }{55}{lstlisting.11.9}% 
+\contentsline {lstlisting}{\numberline {10.47} Esempio di utilizzo di fold\_left }{52}{lstlisting.10.47}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {11.10} Esempio di uso dei costruttori }{55}{lstlisting.11.10}% 
+\contentsline {lstlisting}{\numberline {10.48} Funzione predefinita la propagazione degli errori }{53}{lstlisting.10.48}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {11.11} Esempio di iinizializzatore di variabile in Java }{56}{lstlisting.11.11}% 
+\contentsline {lstlisting}{\numberline {10.49} Gestione delle eccezioni }{53}{lstlisting.10.49}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {11.12} Esempio di creazione ed inizializzazione di oggetti in Java }{56}{lstlisting.11.12}% 
+\contentsline {lstlisting}{\numberline {10.50} Dichiarazione dei costruttori di eccezioni, sintassi }{53}{lstlisting.10.50}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {11.13} (1) Esempio di invocazione dei costruttori esplicita }{56}{lstlisting.11.13}% 
+\contentsline {lstlisting}{\numberline {10.51} Esempi di eccezioni }{53}{lstlisting.10.51}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {11.14} (2) Esempio di invocazione dei costruttori esplicita }{57}{lstlisting.11.14}% 
+\contentsline {lstlisting}{\numberline {10.52} Eccezioni predefinite e funzioni }{53}{lstlisting.10.52}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {11.15} (1) Esempio di variabili di classe }{57}{lstlisting.11.15}% 
+\contentsline {lstlisting}{\numberline {10.53} Esempio di tipi varianti }{53}{lstlisting.10.53}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {11.16} (1) Esempio di variabili di classe }{58}{lstlisting.11.16}% 
+\contentsline {lstlisting}{\numberline {10.54} Esempio con costruttori di arità maggiore di 0 }{54}{lstlisting.10.54}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.55} Esempio di costruttore con ricorsione }{54}{lstlisting.10.55}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.56} Esempio di costruttore polimorfico }{54}{lstlisting.10.56}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {10.57} Esempio con polimorfismo e ricorsione di costruttore }{54}{lstlisting.10.57}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.1} Sintassi di un oggetto }{57}{lstlisting.11.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.2} Un esempio di classe in Java }{58}{lstlisting.11.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.3} Utilizzo della classe }{58}{lstlisting.11.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.4} Esempio di utilizzo di this }{58}{lstlisting.11.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.5} Esempio di eccezione in Java }{59}{lstlisting.11.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.6} Esempio di asserzione in Java }{59}{lstlisting.11.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.7} Esempio di oggetti come valori }{60}{lstlisting.11.7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.8} Esempio di Design By Contract }{60}{lstlisting.11.8}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.9} Esempio di costruttori Java }{61}{lstlisting.11.9}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.10} Esempio di uso dei costruttori }{61}{lstlisting.11.10}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.11} Esempio di iinizializzatore di variabile in Java }{62}{lstlisting.11.11}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.12} Esempio di creazione ed inizializzazione di oggetti in Java }{62}{lstlisting.11.12}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.13} (1) Esempio di invocazione dei costruttori esplicita }{62}{lstlisting.11.13}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.14} (2) Esempio di invocazione dei costruttori esplicita }{63}{lstlisting.11.14}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.15} (1) Esempio di variabili di classe }{63}{lstlisting.11.15}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.16} (1) Esempio di variabili di classe }{64}{lstlisting.11.16}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.17} Esempio di metodi di classe in Java }{64}{lstlisting.11.17}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {lstlisting}{\numberline {11.18} Esempio di ereditarietà in Java }{65}{lstlisting.11.18}% 

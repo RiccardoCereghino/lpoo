@@ -44,7 +44,8 @@
   <internal package="biblatex" priority="9" active="0">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>lpo.bcf</file>
+      <file>lpo.aux</file>
+      <file>lpo-blx.bib</file>
     </provides>
     <requires type="dynamic">
       <file>lpo.bbl</file>
@@ -52,6 +53,7 @@
     <requires type="static">
       <file>blx-dm.def</file>
       <file>blx-compat.def</file>
+      <file>blx-bibtex.def</file>
       <file>biblatex.def</file>
       <file>blx-natbib.def</file>
       <file>standard.bbx</file>
@@ -65,13 +67,15 @@
     </requires>
   </internal>
   <external package="biblatex" priority="5" active="0">
-    <generic>biber</generic>
+    <generic>bibtex</generic>
     <cmdline>
-      <binary>biber</binary>
+      <binary>bibtex8</binary>
+      <option>--wolfgang</option>
+      <option>--min_crossrefs 2</option>
       <infile>lpo</infile>
     </cmdline>
     <input>
-      <file>lpo.bcf</file>
+      <file>lpo.aux</file>
     </input>
     <output>
       <file>lpo.bbl</file>
@@ -80,7 +84,13 @@
       <file>lpo.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>lpo.bcf</file>
+      <file>lpo.aux</file>
+      <file>lpo-blx.bib</file>
+    </requires>
+    <requires type="editable">
+    </requires>
+    <requires type="static">
+      <file>biblatex.bst</file>
     </requires>
   </external>
 </requests>

@@ -1,0 +1,55 @@
+\chapter{Paradigmi di programmazione}
+\begin{theorem}
+  I paradigmi di programmazione sono lo stile/approccio nell'utilizzo di un
+  linguaggio di programmazione.
+\end{theorem}
+
+Il più delle volte un paradigma di programmazione è basato un un modello
+computazionale emergente.
+
+\paragraph{Esempi principali di paradigmi}
+\begin{itemize}
+  \item \textbf{Imperativi:} più vicini al modello hardware, quindi basati
+    sulle nozioni di istruzione e stato, dei linguaggi di esempio sono:
+    \begin{itemize}
+      \item \textit{proceduali:} C;
+      \item \textit{orientati agli oggetti:} Java;
+    \end{itemize}
+  \item \textbf{dichiarativi:} basati su un modello astratto, esempi di
+    linguaggi sono:
+    \begin{itemize}
+      \item \textit{funzionali:} \emph{ML}, basati sulla nozione di
+        \emph{definizione di funzione} e \emph{applicazione di funzione};
+      \item \textit{logici:} \emph{Prolog}, basati sulla nozione di \emph{
+        regola logica} e \emph{query}.
+    \end{itemize}
+\end{itemize}
+
+Di solito i linguaggi di programmazione implementano più di un paradigma per
+favorire la flessibilità, \emph{Java, Javascript, Python} supportano sia
+i paradigmi imperativi che quelli dichiarativi.
+
+\section{Paradigma completamente funzionale}
+Caratteristiche:
+\begin{itemize}
+  \item \textbf{programma:} le definizioni di funzioni matematiche ed un
+    espressione principale;
+  \item \textbf{computazione:} l'applicazione della funzione (\emph{function
+    call});
+  \item \textbf{nessuna nozione di stato:} nessun assegnamento di variabili,
+    più in generale nessuno \emph{statement}, solo \emph{espressioni};
+  \item \textbf{variabili:} parametri di funzioni o variabili locali
+    contenenti valori costanti.
+\end{itemize}
+
+Terminologia:
+\begin{itemize}
+  \item \textbf{higher order functions:} funzioni che possono accettare
+    funzioni come argomenti e possono ritornare funzioni;
+  \item \textbf{lambda expression/fuunction o anonymous functions:} funzioni
+    ottenuto dall'evaluazione di un espressione.
+\end{itemize}
+
+\paragraph{Le funzioni sono valori di prima classe:}
+un evaluazione di espressioni può dare come risultato un altra espressione 
+(first class values).
