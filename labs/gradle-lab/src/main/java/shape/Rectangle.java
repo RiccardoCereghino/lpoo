@@ -49,22 +49,23 @@ public class Rectangle implements Shape {
 	}
 
 	public void move(double dx, double dy) {
-	    // completare
+    this.center.move(dx, dy);
 	}
 
 	public void scale(double factor) {
-	    // completare
+    this.width *= factor;
+    this.height *= factor;
 	}
 
 	public Point getCenter() {
-	    // completare
+    return this.center;
 	}
 
 	public double perimeter() {
-	    // completare
+    return this.width * 2 + this.height *2; 
 	}
 
 	public double area() {
-	    // completare
+    return this.width * this.height;
 	}
 }

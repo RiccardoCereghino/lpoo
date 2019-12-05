@@ -1,4 +1,4 @@
-package lab04_12_05;
+package shape;
 
 /*
  * Classe singleton con una sola istanza.
@@ -14,7 +14,6 @@ public class AreaComparator implements ShapeComparator {
 	}
 
 	public int compare(Shape shape1, Shape shape2) {
-	    // completare
+    return (int)(shape1.area() - shape2.area());
 	}
-
 }
