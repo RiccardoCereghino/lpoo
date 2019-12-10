@@ -163,3 +163,243 @@ assert i * 2 == 10;
 assert i * i == 25;
 assert i / 2. == 2.5;
 \end{lstlisting}
+
+\section{Boxing, unboxing ed efficienza}
+\begin{lstlisting}[language=Java, escapeinside={(£}{£)}, caption={
+Boxing, unboxing in Java
+}
+]
+public static int sum (Integer[] ints) {
+  int s = 0;
+  for (int n : ints) { s += n; }
+  return s;
+}
+
+public static Integer sumInteger(Integer[] ints) {
+  Integer s = 0;
+  for (Integer n : ints) { s += n; }
+  return s;
+}
+
+public static void main(String[] args) {
+  assert sum(new Integer[] {1,2,3,4} == 10;
+  sum(new int[]{1,2,3,4});
+}
+\end{lstlisting}
+
+\section{Stringhe}
+Le stringhe in Java sono oggetti immutabili, delimitate dal carattere $"$ e
+devono essere contenute in una singola linea.
+
+Le escape sequences sono:
+\begin{itemize}
+  \item $\\b$ backspace;
+  \item $\\t$ horizontal tab;
+  \item $\\n$ linefeed;
+  \item $\\f$ form feed;
+  \item $\\r$ carriage return;
+  \item $\\"$ double quote;
+  \item $\\'$ single quote;
+  \item $\\\\$ backslash.
+\end{itemize}
+
+Le stringhe devono essere comparate con metodi di istanza,
+\emph{compareTo(String anotherString)} oppure \emph{equals(Object anObject)}.
+
+\section{Regular expressions in Java}
+Le librerie che implementano le \emph{RegEx} in Java sono:
+\begin{itemize}
+  \item java.util.regex.Pattern
+  \item java.util.regex.Matcher
+  \item java.lang.String
+\end{itemize}
+
+\subsection{Pattern}
+Le istanze di \emph{Pattern} sono oggetti immutabili rappresentanti RegEx,
+creati da stringhe usando \emph{Pattern compile (String regex)}.
+
+\subsection{Matcher}
+I matcher sono oggetti mutabili con una sequenza di input ed un pattern,
+funziona su di una sottosequenza di sequenze di input chiamate \textbf{regioni}
+i cui limiti possono essere modificati con:
+\emph{Matcher region (int start, int end)}
+e la sequenza di input può essere cambiata con:
+\emph{Matcher reset(CharSequence input)}.
+
+\subsection{Operazioni di match}
+\begin{itemize}
+  \item \emph{boolean matches()}: prova ad eseguire un match su tutta la regione
+    utilizzando il pattern;
+\item \emph{boolean lookinhAt()}: prova ad eseguire un match su una
+  sottosequenza della regione all'inizio;
+\item \emph{boolean find()}: prova a trovare la sottosequenza successiva della
+  sequenza di input che matcha il pattern.
+\end{itemize}
+
+\begin{lstlisting}[language=Java, escapeinside={(£}{£)}, caption={
+RegEx in Java
+}
+]
+Pattern pt = Pattern.compile("[A-Z][a-z]+");
+Matcher mt = pt.matcher("Java");
+assert mt.matches();
+mt.reset("Java language");
+assert !mt.matches();
+assert mt.lookingAt();
+mt.reset("language Java");
+assert !mt.matches();
+assert !mt.lookingAt();
+assert mt.find();
+\end{lstlisting}
+
+\section{Operazioni di query}
+\begin{itemize}
+  \item \emph{int start()}: ritorna l'indice d'inizio del match precedente;
+  \item \emph{int end()}: ritorna l'indice dopo l'ultimo carattere matchato;
+  \item \emph{String group()}: ritorna la stringa matchata dal match
+    precedente.
+\end{itemize}
+
+\begin{lstlisting}[language=Java, escapeinside={(£}{£)}, caption={
+Esempi di query RegEx in Java
+}
+]
+Pattern pt = Pattern.compile("[A-z][a-z]+");
+Matcher mt = pt.matcher("Java Language");
+assert !mt.matches();
+assert mt.lookingAt();
+assert mt.start() == 0;
+assert mt.end() == 4;
+assert mt.group.equals("Java");
+mt.region(mt.end(),mt.regionEnd());
+assert !mt.matches();
+assert !mt.lookingAt();
+assert mt.find();
+assert mt.start() == 5;
+assert mt.end() == 13;
+mt.group().equals("Language");
+\end{lstlisting}
+
+Se una query incontra error lancerà l'errore \emph{IllegalStateException}.
+
+\section{MatchResult}
+Il risultato dell'ultima operazione può essere ritornato con il metodo di
+istanza \emph{MatchResult toMatchResult()}, il risultato non interagisce con le
+operazioni che si possono effettuare sul matcher.
+
+\begin{lstlisting}[language=Java, escapeinside={(£}{£)}, caption={
+MatchResult in Java
+}
+]
+Pattern pt = Pattern.compile("[A-Z][a-z]+");
+Matcher mt = pt.matcher("Java Language");
+assert mt.lookingAt();
+MatchResult res = mt.toMatchResult();
+mt.region(res.end(), mt.regionEnd());
+assert res.start() == 0;
+assert res.end() == 4;
+assert res.group().equals("Java");
+assert mt.start() == 0;
+\end{lstlisting}
+
+
+\section{Capturing groups}
+Le parentesi forzano la precedenza, oppure possono essere usate per i capturing
+groups, i quali sono indiciati da sinistra a destra cominciando da $1$, il
+gruppo $0$ è riservato per l'intero pattern.
+
+\begin{lstlisting}[language=Java, escapeinside={(£}{£)}, caption={
+Esempio di capturing groups in Java
+}
+]
+Pattern pt = Pattern.compile("(0|[1-9]\\d*)([Ll]?)");
+Matcher mt = pt.matcher("42L");
+mt.lookingAt();
+MatchResult res = mt.toMatchResult();
+assert res.group(0).equals("42L");
+assert res.group(1).equals("42");
+assert res.group(2).equals("L");
+mt.reset("42");
+mt.lookingAt();
+res = mt.toMatchResult();
+assert res.group(0).equals("42");
+assert res.group(1).equals("42");
+assert res.group(2).equals("");
+\end{lstlisting}
+
+\section{Supporto di Java per le RegEx}
+\begin{itemize}
+  \item Operatori logici:
+    \begin{itemize}
+      \item $XY$: $X$ seguito da $Y$ (concatenazione);
+      \item $X|Y$: $X$ oppure $Y$ (unione);
+      \item $(X)$: X, un capturing group, le parentesi forzano la precedenza;
+    \end{itemize}
+  \item operatori postfissi:
+    \begin{itemize}
+      \item $X?$: opzionale;
+      \item $X*$: $X$ $0$ o più volte (stella di Kleene);
+      \item $X+$: $X$ $1$ o più volte;
+    \end{itemize}
+  \item caratteri:
+    \begin{itemize}
+      \item $x$: il carattere $x$ (se non è un carattere speciale);
+      \item $\\$: niente, ma funziona come carattere di escape;
+      \item $\\t$: il carattere tab;
+      \item $\\n$: il carattere newline;
+      \item $\\r$: il carattere carriage-return;
+    \end{itemize}
+  \item classi di caratteri:
+    \begin{itemize}
+      \item $[abc]$: $a,b,$ o $c$ (classe semplice);
+      \item $[^abc]$: qualsiasi carattere eccetto $a,b,c$;
+      \item $[a-zA-Z]$: range di caratteri;
+    \end{itemize}
+  \item classi di caratteri predefinite:
+    \begin{itemize}
+      \item $.$: qualsiasi carattere (eccetto i terminatori di linea, a meno
+        che il flag \emph{DOTALL} sia specificato);
+      \item $\\s$: il carattere whitespace;
+    \end{itemize}
+  \item matcher di boundaries:
+    \begin{itemize}
+      \item $\wedge$: l'inizio di una linea;
+      \item $\$$: la fine di una linea;
+    \end{itemize}
+  \item capturing con nome e senza:
+    \begin{itemize}
+      \item $(?<name>X)$: definisce il gruppo di cattura $X$;
+      \item $(?:X)$: un gruppo di non cattura $X$.
+    \end{itemize}
+\end{itemize}
+
+\begin{lstlisting}[language=Java, escapeinside={(£}{£)}, caption={
+Supporto in Java per le RegEx
+}
+]
+Pattern pt = Pattern.compile("(\\d\\d\\d)?");
+Matcher mt = pt.matcher("234");
+assert mt.lookingAt();
+assert mt.end() == 3;
+
+pt = Pattern.compile("\\d+");
+Matcher mt = pt.matcher("234");
+assert mt.lookingAt();
+assert mt.end() == 3;
+
+pt = Pattern.compile("\\d*");
+Matcher mt = pt.matcher("234");
+assert mt.lookingAt();
+assert mt.end() == 3;
+
+pt = Pattern.compile("(\\d\\d)?(\\d\\d\\d)?");
+Matcher mt = pt.matcher("234");
+assert mt.lookingAt();
+assert mt.end() == 2;
+
+pt = Pattern.compile("\\d\\d|\\d\\d\\d?");
+Matcher mt = pt.matcher("234");
+assert mt.lookingAt();
+assert mt.end() == 2;
+\end{lstlisting}
+
